@@ -1,0 +1,39 @@
+{
+  "name": "dorameter",
+  "version": "1.0.0",
+  "description": "An app that tracks DORA metrics",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=12.18.3",
+    "yarn": ">=1.9.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "yarn build && yarn start",
+    "start": "node ./dist/greeter.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brigonzalez/dorameter.git"
+  },
+  "keywords": [
+    "dorameter",
+    "dora",
+    "meter",
+    "metrics"
+  ],
+  "author": "Brian Gonzalez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brigonzalez/dorameter/issues"
+  },
+  "homepage": "https://github.com/brigonzalez/dorameter#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.7",
+    "jest": "^26.2.1",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.7"
+  }
+}

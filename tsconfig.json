@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+        "target": "es5",
+        "module": "es2015",
+        "esModuleInterop": true,
+        "outDir": "./dist"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": [
+      "tests/*"
+    ]
+}
