@@ -2,6 +2,8 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
-    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testMatch": [
+      "<rootDir>/tests/**/*.spec.ts"
+    ],
     "moduleFileExtensions": ["ts", "tsx", "js"]
 }

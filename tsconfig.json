@@ -9,8 +9,9 @@
         "sourceMap": true,
         "declaration": true,
         "declarationMap": true,
-        "target": "es5",
-        "module": "es2015",
+        "types": ["jest", "node"],
+        "target": "es6",
+        "module": "CommonJS",
         "esModuleInterop": true,
         "outDir": "./dist"
     },
