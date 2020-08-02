@@ -2,18 +2,16 @@
   "name": "dorameter",
   "version": "1.0.0",
   "description": "An app that tracks DORA metrics",
-  "main": "./dist/server.js",
+  "main": "./dist-server/server.js",
   "engines": {
     "node": ">=12.18.3",
     "yarn": ">=1.9.4"
   },
   "scripts": {
-    "build": "parcel build client/index.html --out-dir dist && tsc",
-    "dev": "yarn build && yarn start-server & yarn dev-client",
-    "dev-client": "parcel client/index.html --port 80",
+    "build": "parcel build client/index.html --out-dir dist-client && tsc",
+    "dev": "yarn build && yarn start & parcel client/index.html --port 80 --out-dir dist-client",
     "lint": "eslint . --quiet --ignore-path .gitignore --ext ts,tsx",
-    "start": "yarn start-server",
-    "start-server": "node ./dist/start-server.js",
+    "start": "node ./dist-server/start-server.js",
     "test": "jest",
     "verify": "yarn lint && yarn test"
   },
@@ -43,14 +41,17 @@
     "eslint": "^7.6.0",
     "eslint-config-get-off-my-lawn": "^5.0.1",
     "jest": "^26.2.1",
+    "ra-data-json-server": "^3.7.1",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "apollo-server-express": "^2.16.1",
     "express": "^4.17.1",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
+    "react-admin": "^3.7.1",
     "react-dom": "^16.13.1"
   }
 }

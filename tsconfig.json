@@ -16,7 +16,7 @@
     "target": "es6",
     "module": "CommonJS",
     "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "./dist-server"
   },
   "include": [
     "server/**/*.ts"

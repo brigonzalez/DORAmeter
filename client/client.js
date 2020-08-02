@@ -1,9 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
+import {Admin, Resource} from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
 
-const App = ({name}) =>
-    <div>
-        <h1>{`Hello ${name}`}</h1>
-    </div>;
+import {UserList} from './components/users.js';
 
-ReactDOM.render(<App name="Brian" />, document.querySelector('#app'));
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const App = () =>
+    <Admin
+        dataProvider={dataProvider}
+    >
+        <Resource
+            list={UserList}
+            name="users"
+        />
+    </Admin>;
+
+ReactDOM.render(<App />, document.querySelector('#app'));
