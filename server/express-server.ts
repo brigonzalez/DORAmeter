@@ -2,7 +2,7 @@ import express from 'express';
 
 import {setGraphQLEndpoint} from './graphql-server';
 
-const PORT = 3000;
+const PORT = 4000;
 
 export const startServer = () => {
     const app = express();
