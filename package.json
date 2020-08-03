@@ -11,7 +11,9 @@
     "build": "parcel build client/index.html --out-dir dist-client && tsc",
     "dev": "yarn build && yarn start & parcel client/index.html --port 80 --out-dir dist-client",
     "lint": "eslint . --quiet --ignore-path .gitignore --ext ts,tsx",
-    "start": "node ./dist-server/start-server.js",
+    "start": "node ./dist-server/start-dorameter.js",
+    "start-local-db": "docker-compose up -d --build",
+    "stop-local-db": "docker-compose down && docker volume rm dorameter_postgresdata",
     "test": "jest",
     "verify": "yarn lint && yarn test"
   },
@@ -47,9 +49,14 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@types/config": "^0.0.36",
     "apollo-server-express": "^2.16.1",
+    "config": "^3.3.1",
     "express": "^4.17.1",
+    "globby": "^11.0.1",
+    "knex": "^0.21.2",
     "parcel-bundler": "^1.12.4",
+    "pg": "^8.3.0",
     "react": "^16.13.1",
     "react-admin": "^3.7.1",
     "react-dom": "^16.13.1"
