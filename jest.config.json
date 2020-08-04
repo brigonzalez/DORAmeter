@@ -1,9 +1,39 @@
 {
-    "transform": {
-      ".(ts|tsx)": "ts-jest"
+  "transform": {
+    ".(ts|tsx)": "ts-jest",
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js"
+  ],
+  "projects": [
+    {
+      "displayName": "client",
+      "testMatch": [
+        "<rootDir>/tests/client/**/*.spec.ts"
+      ]
     },
-    "testMatch": [
-      "<rootDir>/tests/**/*.spec.ts"
-    ],
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    {
+      "displayName": "server",
+      "testMatch": [
+        "<rootDir>/tests/server/**/*.spec.ts"
+      ]
+    }
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  },
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/server/repositories/migrations/"
+  ],
+  "setupFilesAfterEnv": [
+    "jest-chain"
+  ]
 }
