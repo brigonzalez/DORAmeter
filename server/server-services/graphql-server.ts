@@ -1,26 +1,24 @@
 import {Express} from 'express';
 import {ApolloServer} from 'apollo-server-express';
 
-const books = [
+const teams = [
     {
-        author: 'J.K. Rowling',
-        title: "Harry Potter and the Sorcerer's stone"
+        id: '98191948-0D9C-4153-9A2C-4E86E76A3A53',
+        title: 'team a'
     },
     {
-        author: 'Michael Crichton',
-        title: 'Jurassic Park'
+        id: '4C629655-A41B-4295-911D-0B24D8775749',
+        title: 'team b'
     }
 ];
 
-// The GraphQL schema in string form
 const typeDefs = `
-    type Query { books: [Book] }
-    type Book { title: String, author: String }
+    type Query { teams: [Team] }
+    type Team { id: ID, name: String }
   `;
 
-// The resolvers
 const resolvers = {
-    Query: {books: () => books}
+    Query: {teams: () => teams}
 };
 
 export const registerGraphQL = (app: Express): void => {

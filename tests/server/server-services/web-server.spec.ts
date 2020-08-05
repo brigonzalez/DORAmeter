@@ -1,11 +1,11 @@
 import Chance from 'chance';
 import express from 'express';
 
-import {registerGraphQL} from '../../server/server-services/graphql-server';
-import {startServer} from '../../server/server-services/web-server';
+import {registerGraphQL} from '../../../server/server-services/graphql-server';
+import {startServer} from '../../../server/server-services/web-server';
 
 jest.mock('express');
-jest.mock('../../server/server-services/graphql-server');
+jest.mock('../../../server/server-services/graphql-server');
 
 describe('web server', () => {
     const chance = new Chance();
