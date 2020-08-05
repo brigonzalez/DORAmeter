@@ -1,3 +1,4 @@
+import {logError} from '../server-services/logger-service';
 import {selectOne} from '../repositories/healthz-repository';
 
 export interface getRowFromRepository {
@@ -10,7 +11,7 @@ export const areRepositoriesHealthy = async () => {
 
         return true;
     } catch (error) {
-        console.error(error);
+        logError(error);
 
         return false;
     }

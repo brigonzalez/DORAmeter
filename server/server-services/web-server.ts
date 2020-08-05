@@ -4,6 +4,7 @@ import express, {Express} from 'express';
 import globby from 'globby';
 
 import {registerGraphQL} from './graphql-server';
+import {logInfo} from './logger-service';
 
 const PORT: number = 4000;
 
@@ -31,6 +32,6 @@ export const startServer = async (): Promise<any> => {
     await registerEndpoints(app);
 
     app.listen(PORT, () =>
-        console.log(`🚀 Server ready on port ${PORT}`)
+        logInfo(`🚀 Server ready on port ${PORT}`)
     );
 };

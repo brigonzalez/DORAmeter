@@ -1,9 +1,11 @@
 import Chance from 'chance';
 
+import {logError} from '../../../server/server-services/logger-service';
 import {selectOne} from '../../../server/repositories/healthz-repository';
 import {areRepositoriesHealthy} from '../../../server/services/healthz-services';
 
 jest.mock('../../../server/repositories/healthz-repository');
+jest.mock('../../../server/server-services/logger-service');
 
 describe('healthz services', () => {
     const chance = new Chance();
@@ -29,15 +31,14 @@ describe('healthz services', () => {
             beforeEach(() => {
                 expectedError = chance.string();
                 (selectOne as jest.Mock).mockRejectedValue(expectedError);
-                jest.spyOn(console, 'error');
             });
 
             test('should selectOne from the repositories', async () => {
                 const actualResponse = await areRepositoriesHealthy();
 
                 expect(actualResponse).toBe(false);
-                expect(console.error).toHaveBeenCalledTimes(1);
-                expect(console.error).toHaveBeenCalledWith(expectedError);
+                expect(logError).toHaveBeenCalledTimes(1);
+                expect(logError).toHaveBeenCalledWith(expectedError);
             });
         });
     });

@@ -1,11 +1,13 @@
 import Chance from 'chance';
 import express from 'express';
 
+import {logInfo} from '../../../server/server-services/logger-service';
 import {registerGraphQL} from '../../../server/server-services/graphql-server';
 import {startServer} from '../../../server/server-services/web-server';
 
 jest.mock('express');
 jest.mock('../../../server/server-services/graphql-server');
+jest.mock('../../../server/server-services/logger-service');
 
 describe('web server', () => {
     const chance = new Chance();
@@ -23,7 +25,6 @@ describe('web server', () => {
             (express as jest.Mock).mockReturnValue(expectedExpressServer);
             expectedStaticContent = chance.string();
             express.static = jest.fn().mockReturnValue(expectedStaticContent);
-            jest.spyOn(console, 'log');
         });
 
         test('should register graphql', async () => {
@@ -52,8 +53,8 @@ describe('web server', () => {
             const listenFunction = expectedExpressServer.listen.mock.calls[0][1];
 
             listenFunction();
-            expect(console.log).toHaveBeenCalledTimes(1);
-            expect(console.log).toHaveBeenCalledWith(`🚀 Server ready on port ${PORT}`);
+            expect(logInfo).toHaveBeenCalledTimes(1);
+            expect(logInfo).toHaveBeenCalledWith(`🚀 Server ready on port ${PORT}`);
         });
     });
 });
