@@ -1,7 +1,7 @@
-import { OK } from 'http-status';
+import {OK} from 'http-status';
 
-import { handler, path } from '../../../server/controllers/healthz';
-import { areRepositoriesHealthy } from '../../../server/services/healthz-services';
+import {handler, path} from '../../../server/controllers/healthz';
+import {areRepositoriesHealthy} from '../../../server/services/healthz-services';
 
 jest.mock('../../../server/services/healthz-services');
 

@@ -2,11 +2,11 @@ import Chance from 'chance';
 import express from 'express';
 
 import {logInfo} from '../../../server/server-services/logger-service';
-import {registerGraphQL} from '../../../server/server-services/graphql-server';
+import {registerGraphQL} from '../../../server/server-services/graphql/graphql-server';
 import {startServer} from '../../../server/server-services/web-server';
 
 jest.mock('express');
-jest.mock('../../../server/server-services/graphql-server');
+jest.mock('../../../server/server-services/graphql/graphql-server');
 jest.mock('../../../server/server-services/logger-service');
 
 describe('web server', () => {

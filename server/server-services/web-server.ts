@@ -3,15 +3,15 @@ import path from 'path';
 import express, {Express} from 'express';
 import globby from 'globby';
 
-import {registerGraphQL} from './graphql-server';
+import {registerGraphQL} from './graphql/graphql-server';
 import {logInfo} from './logger-service';
 
 const PORT: number = 4000;
 
-/* istanbul ignore next */
 const registerEndpoints = async (app: Express) => {
     const controllerFilePaths = await globby('dist-server/controllers/**/*.js');
 
+    /* istanbul ignore next */
     controllerFilePaths.forEach((controllerPath) => {
         const fullControllerPath = path.join(__dirname, '..', '..', `${path.sep + controllerPath}`);
         const {handler, path: endpointPath} = require(fullControllerPath);
