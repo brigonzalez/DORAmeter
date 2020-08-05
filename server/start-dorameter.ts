@@ -1,9 +1,3 @@
-import {startServer} from './web-server';
-import {handler as healthzController} from './controllers/healthz';
+import {startServer} from './server-services/web-server';
 
-const checkHealth = () => healthzController();
-
-(async () => {
-    await checkHealth();
-    startServer();
-})();
+startServer();

@@ -1,8 +1,6 @@
 {
-  "transform": {
-    ".(ts|tsx)": "ts-jest",
-    "^.+\\.tsx?$": "ts-jest"
-  },
+  "preset": "ts-jest",
+  "testEnvironment": "node",
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -32,8 +30,5 @@
   },
   "coveragePathIgnorePatterns": [
     "<rootDir>/server/repositories/migrations/"
-  ],
-  "setupFilesAfterEnv": [
-    "jest-chain"
   ]
 }

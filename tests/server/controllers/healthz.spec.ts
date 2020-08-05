@@ -8,9 +8,8 @@ describe('healthz controller', () => {
         test('should register correct healthz handler function', async () => {
             await handler();
 
-            expect(selectOne)
-                .toHaveBeenCalledTimes(1)
-                .toHaveBeenCalledWith();
+            expect(selectOne).toHaveBeenCalledTimes(1);
+            expect(selectOne).toHaveBeenCalledWith();
         });
     });
 

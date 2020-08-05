@@ -11,7 +11,7 @@ const registerEndpoints = async (app: Express) => {
     const controllerFilePaths = await globby('dist-server/controllers/**/*.js');
 
     controllerFilePaths.forEach((controllerPath) => {
-        const fullControllerPath = path.join(__dirname, '..', `/${controllerPath}`);
+        const fullControllerPath = path.join(__dirname, '..', '..', `${path.sep + controllerPath}`);
         const {handler, path: endpointPath} = require(fullControllerPath);
 
         app.use(endpointPath, handler);
