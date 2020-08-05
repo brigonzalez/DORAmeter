@@ -3,10 +3,11 @@ import path from 'path';
 import express, {Express} from 'express';
 import globby from 'globby';
 
-import {setGraphQLEndpoint} from './graphql-server';
+import {registerGraphQL} from './graphql-server';
 
 const PORT: number = 4000;
 
+/* istanbul ignore next */
 const registerEndpoints = async (app: Express) => {
     const controllerFilePaths = await globby('dist-server/controllers/**/*.js');
 
@@ -25,7 +26,7 @@ const registerClient = (app: Express): void => {
 export const startServer = async (): Promise<any> => {
     const app = express();
 
-    setGraphQLEndpoint(app);
+    registerGraphQL(app);
     registerClient(app);
     await registerEndpoints(app);
 

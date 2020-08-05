@@ -3,6 +3,7 @@
         "no-undef": "off",
         "node/no-unpublished-import": "off",
         "no-extra-parens": "off",
-        "jest/no-try-expect": "off"
+        "jest/no-try-expect": "off",
+        "jest/prefer-spy-on": "off"
     }
 }

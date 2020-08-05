@@ -23,7 +23,7 @@ const resolvers = {
     Query: {books: () => books}
 };
 
-export const setGraphQLEndpoint = (app: Express): void => {
+export const registerGraphQL = (app: Express): void => {
     const server = new ApolloServer({
         resolvers,
         typeDefs
