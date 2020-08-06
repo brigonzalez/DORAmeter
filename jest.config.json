@@ -1,6 +1,8 @@
 {
   "preset": "ts-jest",
-  "testEnvironment": "node",
+  "transform": {
+    ".(ts|tsx)": "ts-jest"
+  },
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -9,12 +11,14 @@
   "projects": [
     {
       "displayName": "client",
+      "testEnvironment": "jsdom",
       "testMatch": [
         "<rootDir>/tests/client/**/*.spec.ts"
       ]
     },
     {
       "displayName": "server",
+      "testEnvironment": "node",
       "testMatch": [
         "<rootDir>/tests/server/**/*.spec.ts"
       ]

@@ -1,11 +1,10 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {Admin, Resource} from 'react-admin';
-import jsonServerProvider from 'ra-data-json-server';
 
-import {UserList} from './components/users.js';
+import dataProvider from './data-provider';
+import {UserList} from './components/users';
 
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const App = () =>
     <Admin
         dataProvider={dataProvider}
