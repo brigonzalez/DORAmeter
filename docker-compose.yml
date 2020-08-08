@@ -13,13 +13,5 @@ services:
     volumes:
       - postgresdata:/var/lib/postgresql/data
 
-  flyway_postgres:
-    image: flyway/flyway
-    command: -schemas="dorameter" -user="user" -password="user_ps" -url="jdbc:postgresql://postgres:5432/db_name" -connectRetries=10 migrate
-    volumes:
-      - ./server/repositories/migrations:/flyway/sql
-    depends_on:
-      - postgres
-
 volumes:
   postgresdata:
