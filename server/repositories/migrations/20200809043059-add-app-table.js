@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use strict';
 
 var dbm;
@@ -15,13 +16,21 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return null;
+  return db.runSql(`
+  CREATE TABLE dorameter.app
+  (
+      app_id        UUID NOT NULL,
+      name          TEXT NOT NULL,
+      CONSTRAINT app_pk PRIMARY KEY (app_id)
+  );
+  `);
 };
 
 exports.down = function(db) {
-  return null;
+  return db.runSql('DROP TABLE dorameter.app');
 };
 
 exports._meta = {
   "version": 1
 };
+/* eslint-enable */

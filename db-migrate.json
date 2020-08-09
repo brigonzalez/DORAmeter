@@ -1,15 +1,16 @@
 {
-    "defaultEnv": {
-        "ENV": "NODE_ENV"
+    "defaultEnv": "prod",
+    "prod": {
+        "url": {
+            "ENV": "PG_CONNECTION_STRING"
+        }
     },
-    "local": {
+    "localhost": {
         "url": "postgres://user:user_ps@localhost:5432/db_name"
     },
     "pg": {
         "driver": "pg",
-        "url": {
-            "ENV": "PG_CONNECTION_STRING"
-        },
+        "url": "postgres://localhost:5432/postgres",
         "ssl": "true",
         "schema": "dorameter"
     }
