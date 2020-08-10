@@ -8,15 +8,16 @@
     "yarn": ">=1.9.4"
   },
   "scripts": {
-    "build": "parcel build client/index.html --out-dir dist-client && tsc",
-    "dev": "yarn start-local-db && yarn build && yarn start & parcel client/index.html --port 80 --out-dir dist-client",
+    "build": "yarn clean && parcel build client/index.html --cache-dir .parcel-cache --out-dir dist-client && tsc",
+    "clean": "rimraf dist-server .jest-cache .jest-coverage",
+    "dev": "yarn start-local-db && yarn build && yarn start & parcel client/index.html --port 80 --cache-dir .parcel-cache --out-dir dist-client",
     "lint": "eslint . --quiet --ignore-path .gitignore --ext ts,tsx",
     "create-migration": "db-migrate create --config db-migrate.json -m server/repositories/migrations",
     "migrate": "db-migrate up --config db-migrate.json -m server/repositories/migrations -t dorameter_migrations",
     "start": "node ./dist-server/start-dorameter.js",
     "start-local-db": "docker-compose up -d --build && sleep 5 && yarn migrate -e localhost",
     "stop-local-db": "docker-compose down && docker volume rm dorameter_postgresdata",
-    "test": "jest --coverage",
+    "test": "yarn clean && jest --coverage",
     "verify": "yarn lint && yarn test"
   },
   "repository": {
@@ -50,6 +51,7 @@
     "eslint-config-get-off-my-lawn": "^5.0.1",
     "jest": "^26.2.1",
     "jest-when": "^2.7.2",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   },

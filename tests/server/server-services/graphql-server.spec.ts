@@ -1,12 +1,12 @@
 import {ApolloServer} from 'apollo-server-express';
 
-import resolvers from '../../../../server/server-services/graphql/resolvers';
-import typeDefs from '../../../../server/server-services/graphql/type-definitions';
-import {registerGraphQL} from '../../../../server/server-services/graphql/graphql-server';
+import resolvers from '../../../server/resolvers';
+import typeDefs from '../../../server/type-definitions';
+import {registerGraphQL} from '../../../server/server-services/graphql-server';
 
 jest.mock('apollo-server-express');
-jest.mock('../../../../server/server-services/graphql/resolvers');
-jest.mock('../../../../server/server-services/graphql/type-definitions');
+jest.mock('../../../server/resolvers');
+jest.mock('../../../server/type-definitions');
 
 describe('graphql server', () => {
     describe('registerGraphQL', () => {
