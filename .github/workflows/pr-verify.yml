@@ -1,6 +1,6 @@
 name: pr-verify
 
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   build:
@@ -15,6 +15,5 @@ jobs:
         id: setup-node
         with:
           node-version: 12.18.3
-      - run: |
-          yarn --no-progress
-          yarn test
+      - run: yarn --no-progress
+      - run: yarn veirfy
