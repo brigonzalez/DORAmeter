@@ -2,8 +2,6 @@ import Chance from 'chance';
 import ReactDOM from 'react-dom';
 
 jest.mock('react-dom');
-jest.mock('../../client/components/users');
-jest.mock('../../client/data-provider');
 
 describe('client', () => {
     const chance = new Chance();
