@@ -1,9 +1,6 @@
 import Chance from 'chance';
 import ReactDOM from 'react-dom';
 
-import dataProvider from '../../client/data-provider';
-import {UserList} from '../../client/components/users';
-
 jest.mock('react-dom');
 jest.mock('../../client/components/users');
 jest.mock('../../client/data-provider');
@@ -26,13 +23,9 @@ describe('client', () => {
     describe('react-admin component', () => {
         test('should do render Admin component from react-admin', () => {
             const adminComponent = expectedApp.type();
-
-            expect(adminComponent.props.dataProvider).toStrictEqual(dataProvider);
-
             const resourceComponent = adminComponent.props.children;
 
             expect(resourceComponent.props.name).toBe('users');
-            expect(resourceComponent.props.list).toBe(UserList);
         });
     });
 
