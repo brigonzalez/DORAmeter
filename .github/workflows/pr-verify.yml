@@ -1,4 +1,4 @@
-name: Node.js CI
+name: pr-verify
 
 on:
   push:
@@ -8,12 +8,15 @@ on:
 
 jobs:
   build:
+    name: pr-verify
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+        id: checkout
       - name: Use Node.js 12.18.3
         uses: actions/setup-node@v1
+        id: setup-node
         with:
           node-version: 12.18.3
       - run: |
