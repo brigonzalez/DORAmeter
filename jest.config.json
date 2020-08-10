@@ -1,4 +1,6 @@
 {
+  "cacheDirectory": ".jest-cache",
+  "coverageDirectory": ".jest-coverage",
   "preset": "ts-jest",
   "transform": {
     ".(ts|tsx)": "ts-jest"

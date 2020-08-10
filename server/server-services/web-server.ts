@@ -3,7 +3,7 @@ import path from 'path';
 import express, {Express} from 'express';
 import globby from 'globby';
 
-import {registerGraphQL} from './graphql/graphql-server';
+import {registerGraphQL} from './graphql-server';
 import {logInfo} from './logger-service';
 
 const PORT: number = 4000;

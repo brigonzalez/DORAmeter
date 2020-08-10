@@ -16,4 +16,4 @@ jobs:
         with:
           node-version: 12.18.3
       - run: yarn --no-progress
-      - run: yarn veirfy
+      - run: yarn verify

@@ -2,5 +2,6 @@
 .vscode
 dist*
 node_modules
-coverage
-.cache
+.jest-cache
+.jest-coverage
+.parcel-cache
