@@ -12,17 +12,34 @@
   ],
   "projects": [
     {
-      "displayName": "client",
+      "displayName": "unit-client",
       "testEnvironment": "jsdom",
       "testMatch": [
-        "<rootDir>/tests/client/**/*.spec.ts"
+        "<rootDir>/tests/unit-client/**/*.spec.ts"
+      ],
+      "coveragePathIgnorePatterns": [
+        "<rootDir>/tests/"
       ]
     },
     {
-      "displayName": "server",
+      "displayName": "unit-server",
       "testEnvironment": "node",
       "testMatch": [
-        "<rootDir>/tests/server/**/*.spec.ts"
+        "<rootDir>/tests/unit-server/**/*.spec.ts"
+      ],
+      "coveragePathIgnorePatterns": [
+        "<rootDir>/tests/"
+      ]
+    },
+    {
+      "displayName": "integration-server",
+      "testEnvironment": "node",
+      "testMatch": [
+        "<rootDir>/tests/integration-server/**/*.spec.ts"
+      ],
+      "coveragePathIgnorePatterns": [
+        "<rootDir>/server/repositories/migrations/",
+        "<rootDir>/tests/"
       ]
     }
   ],
@@ -33,8 +50,5 @@
       "lines": 100,
       "statements": 100
     }
-  },
-  "coveragePathIgnorePatterns": [
-    "<rootDir>/server/repositories/migrations/"
-  ]
+  }
 }

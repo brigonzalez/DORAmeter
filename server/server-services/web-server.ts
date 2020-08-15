@@ -11,7 +11,6 @@ const PORT: number = 4444;
 const registerEndpoints = async (app: Express) => {
     const controllerFilePaths = await globby('dist-server/controllers/**/*.js');
 
-    /* istanbul ignore next: the following is tested by integration tests */
     controllerFilePaths.forEach((controllerPath) => {
         const fullControllerPath = path.join(__dirname, '..', '..', `${path.sep + controllerPath}`);
         const {handler, path: endpointPath, method} = require(fullControllerPath);
@@ -37,7 +36,7 @@ export const startServer = async (): Promise<any> => {
     registerJSONParsingMiddleware(app);
     await registerEndpoints(app);
 
-    app.listen(PORT, () =>
+    return app.listen(PORT, () =>
         logInfo(`🚀 Server ready on port ${PORT}`)
     );
 };

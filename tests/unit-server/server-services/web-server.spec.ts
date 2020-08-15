@@ -18,9 +18,11 @@ describe('web server', () => {
 
         beforeEach(() => {
             expectedExpressServer = {
+                [chance.string()]: chance.string(),
+                get: jest.fn(),
                 listen: jest.fn(),
-                use: jest.fn(),
-                [chance.string()]: chance.string()
+                post: jest.fn(),
+                use: jest.fn()
             };
             (express as jest.Mock).mockReturnValue(expectedExpressServer);
             expectedStaticContent = chance.string();
