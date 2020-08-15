@@ -1,10 +1,10 @@
 import {Response, Request} from 'express';
-import {OK} from 'http-status';
+import {CREATED} from 'http-status';
 
 export const handler = ({body}: Request, response: Response) => {
-    console.log(body);
+    // TODO: call service functions to persist app and event
 
-    response.status(OK).send({});
+    response.status(CREATED).send();
 };
 
 export const path = '/';

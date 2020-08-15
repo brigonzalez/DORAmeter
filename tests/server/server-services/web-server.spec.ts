@@ -43,7 +43,7 @@ describe('web server', () => {
         });
 
         test('should start listening to requests', async () => {
-            const PORT = 4000;
+            const PORT = 4444;
 
             await startServer();
 

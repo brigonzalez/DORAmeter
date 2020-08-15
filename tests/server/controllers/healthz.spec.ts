@@ -1,6 +1,6 @@
 import {OK} from 'http-status';
 
-import {handler, path} from '../../../server/controllers/healthz';
+import {handler} from '../../../server/controllers/healthz';
 import {areRepositoriesHealthy} from '../../../server/services/healthz-services';
 
 jest.mock('../../../server/services/healthz-services');
@@ -60,12 +60,6 @@ describe('healthz controller', () => {
                     server: 'OK'
                 });
             });
-        });
-    });
-
-    describe('path', () => {
-        test('should register correct healthz path', () => {
-            expect(path).toBe('/healthz');
         });
     });
 });
