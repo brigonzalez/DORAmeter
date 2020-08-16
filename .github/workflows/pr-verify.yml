@@ -12,11 +12,13 @@ jobs:
         id: checkout
       - name: Build the docker-compose stack
         uses: actions/checkout@v2
-        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
+        run: docker-compose up -d --build
       - name: Use Node.js 12.18.3
         uses: actions/setup-node@v1
         id: setup-node
         with:
           node-version: 12.18.3
+      - name: Migrate database
+        run: yarn migrate
       - run: yarn --no-progress
       - run: yarn verify
