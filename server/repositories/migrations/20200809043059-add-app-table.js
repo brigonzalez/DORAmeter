@@ -17,9 +17,10 @@ exports.setup = function(options, seedLink) {
 
 exports.up = function(db) {
   return db.runSql(`
+  CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
   CREATE TABLE dorameter.app
   (
-      app_id        UUID NOT NULL,
+      app_id        UUID NOT NULL DEFAULT uuid_generate_v1(),
       name          TEXT NOT NULL,
       CONSTRAINT app_pk PRIMARY KEY (app_id)
   );

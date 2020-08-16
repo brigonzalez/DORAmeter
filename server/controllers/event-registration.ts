@@ -1,7 +1,11 @@
 import {Response, Request} from 'express';
 import {CREATED} from 'http-status';
 
-export const handler = (_: Request, response: Response) => {
+import eventRegistrationService from '../services/event-registration-service';
+
+export const handler = async ({body}: Request, response: Response) => {
+    await eventRegistrationService(body);
+
     response.status(CREATED).send();
 };
 
