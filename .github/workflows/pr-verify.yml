@@ -19,9 +19,7 @@ jobs:
           node-version: 12.18.3
       - name: Installs dependencies
         run: yarn --no-progress
-      - name: Install postgres driver
-        run: sudo apt install postgresql
       - name: Migrate database
-        run: yarn migrate
+        run: yarn migrate -e localhost
       - name: Runs linter and tests
         run: yarn verify
