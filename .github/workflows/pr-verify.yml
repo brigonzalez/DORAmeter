@@ -10,10 +10,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         id: checkout
+      - name: Build the docker-compose stack
+        run: docker-compose up -d --build
       - name: Use Node.js 12.18.3
         uses: actions/setup-node@v1
         id: setup-node
         with:
           node-version: 12.18.3
-      - run: yarn --no-progress
-      - run: yarn verify
+      - name: Installs dependencies
+        run: yarn --no-progress
+      - name: Migrate database
+        run: yarn migrate -e localhost
+      - name: Runs linter and tests
+        run: yarn verify

@@ -13,3 +13,5 @@ export const handler = async (_: Request, response: Response) => {
 };
 
 export const path = '/healthz';
+
+export const method = 'get';

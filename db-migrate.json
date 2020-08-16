@@ -1,6 +1,7 @@
 {
     "defaultEnv": "prod",
     "prod": {
+        "driver": "pg",
         "url": {
             "ENV": "PG_CONNECTION_STRING"
         }

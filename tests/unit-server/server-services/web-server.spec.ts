@@ -18,9 +18,11 @@ describe('web server', () => {
 
         beforeEach(() => {
             expectedExpressServer = {
+                [chance.string()]: chance.string(),
+                get: jest.fn(),
                 listen: jest.fn(),
-                use: jest.fn(),
-                [chance.string()]: chance.string()
+                post: jest.fn(),
+                use: jest.fn()
             };
             (express as jest.Mock).mockReturnValue(expectedExpressServer);
             expectedStaticContent = chance.string();
@@ -43,7 +45,7 @@ describe('web server', () => {
         });
 
         test('should start listening to requests', async () => {
-            const PORT = 4000;
+            const PORT = 4444;
 
             await startServer();
 
