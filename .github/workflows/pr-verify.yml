@@ -17,7 +17,9 @@ jobs:
         id: setup-node
         with:
           node-version: 12.18.3
+      - name: Installs dependencies
+        run: yarn --no-progress
       - name: Migrate database
         run: yarn migrate
-      - run: yarn --no-progress
-      - run: yarn verify
+      - name: Runs linter and tests
+        run: yarn verify
