@@ -1,6 +1,15 @@
+import joi from '@hapi/joi';
+
 import {getAppByAppName, createApp} from './app-service';
 import {getEventTypeByEventType} from './event-type-service';
 import {createEvent} from './event-service';
+
+export const eventPayloadValidator =
+    joi.object({
+        appName: joi.string().required(),
+        buildNumber: joi.string().required(),
+        eventType: joi.string().valid('DEPLOYMENT', 'CODE_COMMITTED', 'SUCCESSFUL_TEST', 'UNSUCCESSFUL_TEST').required()
+    });
 
 export default async (event: {
     appName: string,

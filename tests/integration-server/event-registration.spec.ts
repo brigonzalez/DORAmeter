@@ -1,6 +1,6 @@
 import Chance from 'chance';
 import fetch from 'node-fetch';
-import {CREATED} from 'http-status';
+import {CREATED, BAD_REQUEST} from 'http-status';
 
 import {getDBClient} from '../../server/repositories/database-connection';
 
@@ -34,9 +34,9 @@ describe('event registration controller', () => {
             };
         });
 
-        const createAppWithPOSTRequest = () =>
+        const registerEventWithPOSTRequest = (registerEventBody = expectedEventBody) =>
             fetch('http://localhost:4444/event', {
-                body: JSON.stringify(expectedEventBody),
+                body: JSON.stringify(registerEventBody),
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -44,7 +44,7 @@ describe('event registration controller', () => {
             });
 
         test('should return a 201 response with an empty body', async () => {
-            const response = await createAppWithPOSTRequest();
+            const response = await registerEventWithPOSTRequest();
 
             expect(response.status).toBe(CREATED);
             expect(response.headers.get('content-length')).toBe('0');
@@ -64,7 +64,7 @@ describe('event registration controller', () => {
         });
 
         test('should not create a new app if one was already created', async () => {
-            await createAppWithPOSTRequest();
+            await registerEventWithPOSTRequest();
             const dbClient = getDBClient();
             const [app, expectedlyNonExistentApp] = await dbClient
                 .select('app_id', 'name')
@@ -106,6 +106,22 @@ describe('event registration controller', () => {
                 });
 
             expect(eventType.event_type).toBe(expectedEventBody.eventType);
+        });
+
+        test('should reject a request with a malformed body', async () => {
+            const falsyOrStringValue = () => chance.bool() ? chance.pickone([undefined, null]) : chance.string();
+            const malformedEventRequest = {
+                appName: falsyOrStringValue(),
+                buildNumber: falsyOrStringValue(),
+                eventType: chance.string()
+            };
+            const response = await registerEventWithPOSTRequest(malformedEventRequest);
+
+            expect(response.status).toBe(BAD_REQUEST);
+
+            const textResponse = await response.text();
+
+            expect(textResponse).toContain('Error validating request body.');
         });
     });
 });
