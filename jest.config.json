@@ -1,6 +1,6 @@
 {
   "cacheDirectory": ".jest-cache",
-  "coverageDirectory": ".jest-coverage",
+  "coverageReporters": ["json-summary", "lcov"],
   "preset": "ts-jest",
   "transform": {
     ".(ts|tsx)": "ts-jest"

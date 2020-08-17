@@ -3,5 +3,5 @@
 dist*
 node_modules
 .jest-cache
-.jest-coverage
+coverage
 .parcel-cache
