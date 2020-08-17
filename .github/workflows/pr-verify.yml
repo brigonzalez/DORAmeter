@@ -27,6 +27,7 @@ jobs:
       - name: Runs linter and tests
         run: yarn verify
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Test coverage auto-commit
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply php-cs-fixer changes
+          commit_message: Test coverage auto-commit
