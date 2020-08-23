@@ -18,6 +18,8 @@ describe('event registration controller', () => {
     });
 
     describe('POST', () => {
+        const dbClient = getDBClient();
+
         let expectedEventBody,
             createdAppId;
 
@@ -51,7 +53,6 @@ describe('event registration controller', () => {
         });
 
         test('should write app to database', async () => {
-            const dbClient = getDBClient();
             const [app] = await dbClient
                 .select('app_id', 'name')
                 .from('app')
@@ -65,7 +66,6 @@ describe('event registration controller', () => {
 
         test('should not create a new app if one was already created', async () => {
             await registerEventWithPOSTRequest();
-            const dbClient = getDBClient();
             const [app, expectedlyNonExistentApp] = await dbClient
                 .select('app_id', 'name')
                 .from('app')
@@ -78,7 +78,6 @@ describe('event registration controller', () => {
         });
 
         test('should event to database', async () => {
-            const dbClient = getDBClient();
             const [event] = await dbClient
                 .select('event_id', 'app_id')
                 .from('event')
@@ -91,7 +90,6 @@ describe('event registration controller', () => {
         });
 
         test('should add the correct event_type_id in the event', async () => {
-            const dbClient = getDBClient();
             const [event] = await dbClient
                 .select('event_type_id')
                 .from('event')
@@ -108,12 +106,28 @@ describe('event registration controller', () => {
             expect(eventType.event_type).toBe(expectedEventBody.eventType);
         });
 
-        test('should reject a request with a malformed body', async () => {
+        test('should reject a request with malformed properties', async () => {
             const falsyOrStringValue = () => chance.bool() ? chance.pickone([undefined, null]) : chance.string();
             const malformedEventRequest = {
                 appName: falsyOrStringValue(),
                 buildNumber: falsyOrStringValue(),
                 eventType: chance.string()
+            };
+            const response = await registerEventWithPOSTRequest(malformedEventRequest);
+
+            expect(response.status).toBe(BAD_REQUEST);
+
+            const textResponse = await response.text();
+
+            expect(textResponse).toContain('Error validating request body.');
+        });
+
+        test('should reject a request with a malformed object', async () => {
+            const malformedEventRequest = {
+                [chance.string()]: chance.string(),
+                appName: chance.string(),
+                buildNumber: chance.string(),
+                eventType: 'CODE_COMMITTED'
             };
             const response = await registerEventWithPOSTRequest(malformedEventRequest);
 

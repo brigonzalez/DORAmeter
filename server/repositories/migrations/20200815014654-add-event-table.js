@@ -19,7 +19,7 @@ exports.up = function (db) {
     return db.runSql(`
         CREATE TABLE dorameter.event
         (
-            event_id          UUID NOT NULL               DEFAULT uuid_generate_v1(),
+            event_id          UUID NOT NULL DEFAULT uuid_generate_v1(),
             app_id            UUID NOT NULL,
             event_type_id     UUID NOT NULL,
             created_timestamp TIMESTAMP WITHOUT TIME ZONE DEFAULT (NOW() AT TIME ZONE 'UTC'),
