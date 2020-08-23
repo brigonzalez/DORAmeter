@@ -1,7 +1,8 @@
 .DS_Store
-.vscode
+.idea
 dist*
 node_modules
 .jest-cache
 coverage
 .parcel-cache
+yarn-error.log
