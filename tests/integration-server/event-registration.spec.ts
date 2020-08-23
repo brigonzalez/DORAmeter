@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import {CREATED, BAD_REQUEST} from 'http-status';
 
 import {getDBClient} from '../../server/repositories/database-connection';
+import {LOCALHOST_URL} from '../constants';
 
 import {startDORAMeterIfNotRunning, stopDORAMeter} from './server-helpers';
 
@@ -37,7 +38,7 @@ describe('event registration controller', () => {
         });
 
         const registerEventWithPOSTRequest = (registerEventBody = expectedEventBody) =>
-            fetch('http://localhost:4444/event', {
+            fetch(`${LOCALHOST_URL}/event`, {
                 body: JSON.stringify(registerEventBody),
                 headers: {
                     'Content-Type': 'application/json'
