@@ -1,6 +1,6 @@
-import {selectAppByAppName, insertApp} from '../repositories/app-repository';
+import {selectAppByAppName, insertApp} from '../../repositories/app-repository';
 
-export interface getAppFromRepository {
+export interface getAppByAppNameFromRepository {
     (name: string): Promise<{
         app_id: string,
         name: string

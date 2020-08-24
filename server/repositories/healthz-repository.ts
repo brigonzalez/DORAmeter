@@ -1,9 +1,8 @@
-import {getRowFromRepository} from '../services/healthz-services';
+import {getRowFromRepository} from '../services/api-services/healthz-services';
 
 import {getDBClient} from './database-connection';
 
-export const selectOne: getRowFromRepository = async () => {
-    const dbClient = getDBClient();
+const dbClient = getDBClient();
 
-    await dbClient.select(1);
-};
+export const selectOne: getRowFromRepository = () =>
+    dbClient.select(1);

@@ -19,12 +19,6 @@ describe('deployment frequency query', () => {
         await stopDORAMeter();
     });
 
-    /*
-     * 1. insert directly into database to control timestamp
-     * 2. test results from graphql-query to ensure that the correct rating is returned
-     * for the deployment frequency
-     */
-
     const insertApp = async (appName: string) => {
         const [{app_id}] = await dbClient
             .returning('*')
@@ -60,12 +54,15 @@ describe('deployment frequency query', () => {
 
         await insertEvent(appId, lastDeploymentTimestamp);
         await insertEvent(appId, followingDeploymentTimestamp);
+
+        return appId;
     };
 
     const makeGQLRequestToRetrieveDeploymentFrequency = async (appName: string) => {
         const data = await gqlClient.request(gql`
             query getAppDeploymentFrequency($appName: String!) {
                 app(name: $appName) {
+                    id
                     name
                     deploymentFrequency {
                         rating
@@ -84,8 +81,10 @@ describe('deployment frequency query', () => {
         const lastDeploymentTimestamp = '2020-08-20 18:43:03.028739';
         const followingDeploymentTimestamp = '2020-08-20 17:43:03.028739';
 
+        let appId: string;
+
         beforeAll(async () => {
-            await setupTestsForDeploymentFrequency(elitePerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(elitePerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -97,6 +96,7 @@ describe('deployment frequency query', () => {
                     lastDeploymentTimestamp,
                     rating: 'ELITE'
                 },
+                id: appId,
                 name: elitePerformingAppName
             });
         });
@@ -107,8 +107,10 @@ describe('deployment frequency query', () => {
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
         const followingDeploymentTimestamp = '2020-08-20 12:43:03.028739';
 
+        let appId: string;
+
         beforeAll(async () => {
-            await setupTestsForDeploymentFrequency(highPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(highPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -120,6 +122,7 @@ describe('deployment frequency query', () => {
                     lastDeploymentTimestamp,
                     rating: 'HIGH'
                 },
+                id: appId,
                 name: highPerformingAppName
             });
         });
@@ -130,8 +133,10 @@ describe('deployment frequency query', () => {
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
         const followingDeploymentTimestamp = '2020-08-14 10:43:03.028739';
 
+        let appId: string;
+
         beforeAll(async () => {
-            await setupTestsForDeploymentFrequency(mediumPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(mediumPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -143,6 +148,7 @@ describe('deployment frequency query', () => {
                     lastDeploymentTimestamp,
                     rating: 'MEDIUM'
                 },
+                id: appId,
                 name: mediumPerformingAppName
             });
         });
@@ -153,8 +159,10 @@ describe('deployment frequency query', () => {
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
         const followingDeploymentTimestamp = '2020-07-20 08:43:03.028739';
 
+        let appId: string;
+
         beforeAll(async () => {
-            await setupTestsForDeploymentFrequency(lowPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(lowPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -166,6 +174,7 @@ describe('deployment frequency query', () => {
                     lastDeploymentTimestamp,
                     rating: 'LOW'
                 },
+                id: appId,
                 name: lowPerformingAppName
             });
         });
@@ -176,8 +185,10 @@ describe('deployment frequency query', () => {
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
         const followingDeploymentTimestamp = '2020-01-20 09:43:03.028739';
 
+        let appId: string;
+
         beforeAll(async () => {
-            await setupTestsForDeploymentFrequency(nonPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(nonPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -189,6 +200,7 @@ describe('deployment frequency query', () => {
                     lastDeploymentTimestamp,
                     rating: 'NONE'
                 },
+                id: appId,
                 name: nonPerformingAppName
             });
         });

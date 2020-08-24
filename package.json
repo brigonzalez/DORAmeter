@@ -72,7 +72,6 @@
     "db-migrate": "^0.11.11",
     "db-migrate-pg": "^1.2.2",
     "express": "^4.17.1",
-    "express-joi-validation": "^4.0.4-beta.0",
     "globby": "^11.0.1",
     "http-status": "^1.4.2",
     "istanbul-badges-readme": "^1.0.5",

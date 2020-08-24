@@ -2,7 +2,7 @@ import {ApolloServer} from 'apollo-server-express';
 
 import resolvers from '../../../server/resolvers';
 import typeDefs from '../../../server/type-definitions';
-import {registerGraphQL} from '../../../server/server-services/graphql-server';
+import {registerGraphQL} from '../../../server/server-infra/graphql-server';
 
 jest.mock('apollo-server-express');
 jest.mock('../../../server/resolvers');

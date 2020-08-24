@@ -1,20 +1,20 @@
 import Chance from 'chance';
 import express from 'express';
 
-import {logInfo} from '../../../server/server-services/logger-service';
-import {registerGraphQL} from '../../../server/server-services/graphql-server';
-import {startServer} from '../../../server/server-services/web-server';
+import {logInfo} from '../../../server/server-infra/logger-service';
+import {registerGraphQL} from '../../../server/server-infra/graphql-server';
+import {startServer} from '../../../server/server-infra/web-server';
 
 jest.mock('express');
-jest.mock('../../../server/server-services/graphql-server');
-jest.mock('../../../server/server-services/logger-service');
+jest.mock('../../../server/server-infra/graphql-server');
+jest.mock('../../../server/server-infra/logger-service');
 
 describe('web server', () => {
     const chance = new Chance();
 
     describe('startServer', () => {
-        let expectedExpressServer,
-            expectedStaticContent;
+        let expectedExpressServer: any,
+            expectedStaticContent: string;
 
         beforeEach(() => {
             expectedExpressServer = {
@@ -24,8 +24,9 @@ describe('web server', () => {
                 post: jest.fn(),
                 use: jest.fn()
             };
-            (express as jest.Mock).mockReturnValue(expectedExpressServer);
+            (express as unknown as jest.Mock).mockReturnValue(expectedExpressServer);
             expectedStaticContent = chance.string();
+            // @ts-ignore
             express.static = jest.fn().mockReturnValue(expectedStaticContent);
         });
 

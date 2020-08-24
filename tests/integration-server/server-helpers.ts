@@ -3,7 +3,7 @@ import {Server} from 'http';
 import fetch from 'node-fetch';
 
 import {LOCALHOST_URL} from '../constants';
-import {startServer} from '../../server/server-services/web-server';
+import {startServer} from '../../server/server-infra/web-server';
 
 let server: Server;
 

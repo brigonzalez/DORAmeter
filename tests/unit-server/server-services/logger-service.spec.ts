@@ -1,6 +1,6 @@
 import Chance from 'chance';
 
-import {logInfo, logError} from '../../../server/server-services/logger-service';
+import {logInfo, logError} from '../../../server/server-infra/logger-service';
 
 describe('logger service', () => {
     const chance = new Chance();

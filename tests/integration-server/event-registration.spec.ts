@@ -21,8 +21,8 @@ describe('event registration controller', () => {
     describe('POST', () => {
         const dbClient = getDBClient();
 
-        let expectedEventBody,
-            createdAppId;
+        let expectedEventBody: any,
+            createdAppId: string;
 
         beforeAll(() => {
             expectedEventBody = {
@@ -118,9 +118,9 @@ describe('event registration controller', () => {
 
             expect(response.status).toBe(BAD_REQUEST);
 
-            const textResponse = await response.text();
+            const jsonResponse = await response.json();
 
-            expect(textResponse).toContain('Error validating request body.');
+            expect(jsonResponse.error).toContain('Error validating request.');
         });
 
         test('should reject a request with a malformed object', async () => {
@@ -134,9 +134,9 @@ describe('event registration controller', () => {
 
             expect(response.status).toBe(BAD_REQUEST);
 
-            const textResponse = await response.text();
+            const jsonResponse = await response.json();
 
-            expect(textResponse).toContain('Error validating request body.');
+            expect(jsonResponse.error).toContain('Error validating request.');
         });
     });
 });
