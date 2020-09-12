@@ -8,13 +8,13 @@ import {createEvent} from '../domain-services/event-service';
 const eventPayloadValidator =
     joi.object({
         appName: joi.string().required(),
-        buildNumber: joi.string().required(),
+        buildId: joi.string().required(),
         eventType: joi.string().valid('DEPLOYMENT', 'CODE_COMMITTED', 'SUCCESSFUL_TEST', 'UNSUCCESSFUL_TEST').required()
     });
 
 export default async (event: {
     appName: string,
-    buildNumber: string,
+    buildId: string,
     eventType: string
 }): Promise<{
     error: Error | null

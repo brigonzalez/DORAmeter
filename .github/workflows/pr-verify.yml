@@ -14,7 +14,6 @@ jobs:
           ref: ${{ github.head_ref }}
       - name: Build the docker-compose stack
         run: docker-compose up -d --build
-
       - name: Use Node.js 12.18.3
         uses: actions/setup-node@v1
         id: setup-node
@@ -26,7 +25,6 @@ jobs:
         run: yarn migrate -e localhost
       - name: Runs linter and tests
         run: yarn verify
-
       - name: Test coverage auto-commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

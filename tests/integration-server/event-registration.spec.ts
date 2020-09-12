@@ -27,7 +27,7 @@ describe('event registration controller', () => {
         beforeAll(() => {
             expectedEventBody = {
                 appName: chance.word(),
-                buildNumber: chance.guid(),
+                buildId: chance.guid(),
                 eventType: chance.pickone([
                     'DEPLOYMENT',
                     'CODE_COMMITTED',
@@ -111,7 +111,7 @@ describe('event registration controller', () => {
             const falsyOrStringValue = () => chance.bool() ? chance.pickone([undefined, null]) : chance.string();
             const malformedEventRequest = {
                 appName: falsyOrStringValue(),
-                buildNumber: falsyOrStringValue(),
+                buildId: falsyOrStringValue(),
                 eventType: chance.string()
             };
             const response = await registerEventWithPOSTRequest(malformedEventRequest);
@@ -127,7 +127,7 @@ describe('event registration controller', () => {
             const malformedEventRequest = {
                 [chance.string()]: chance.string(),
                 appName: chance.string(),
-                buildNumber: chance.string(),
+                buildId: chance.string(),
                 eventType: 'CODE_COMMITTED'
             };
             const response = await registerEventWithPOSTRequest(malformedEventRequest);
