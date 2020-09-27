@@ -2,7 +2,7 @@ import {gql} from 'apollo-server-express';
 
 export default gql`
     type Query {
-        app: App!
+        app(name: String!): App!
     }
 
     type App {
@@ -14,7 +14,6 @@ export default gql`
     type DeploymentFrequency {
         rating: Rating!
         lastDeploymentTimestamp: String!
-        followingDeploymentTimestamp: String!
     }
     
     enum Rating {

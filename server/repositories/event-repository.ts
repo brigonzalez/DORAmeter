@@ -1,6 +1,6 @@
 import {
     createEventInRepository,
-    selectLastEventByAppIdAndEventTypeIdInRepository
+    getLastEventByAppIdAndEventTypeIdInRepository
 } from '../services/domain-services/event-service';
 
 import {getDBClient} from './database-connection';
@@ -17,7 +17,7 @@ export const insertEvent: createEventInRepository = async (event) => {
     return createdEvent;
 };
 
-export const selectLastEventByAppIdAndEventTypeId: selectLastEventByAppIdAndEventTypeIdInRepository
+export const selectLastEventByAppIdAndEventTypeId: getLastEventByAppIdAndEventTypeIdInRepository
     = async (app_id, event_type_id) => {
         const [event] = await dbClient
             .first('event_id', 'app_id', 'event_type_id', 'created_timestamp')

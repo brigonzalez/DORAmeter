@@ -17,12 +17,14 @@ export const createEvent = (event: {
     }) =>
     insertEvent(event);
 
-export interface selectLastEventByAppIdAndEventTypeIdInRepository {
+export interface getLastEventByAppIdAndEventTypeIdInRepository {
     (app_id: string, event_type_id: string): Promise<{
+        event_id: string,
         app_id: string,
-        name: string
+        event_type_id: string,
+        created_timestamp: string
     }>
 }
 
-export const getLastEventByAppIdAndEventTypeId = async (appId: string, eventTypeId: string) =>
+export const getLastEventByAppIdAndEventTypeId = (appId: string, eventTypeId: string) =>
     selectLastEventByAppIdAndEventTypeId(appId, eventTypeId);

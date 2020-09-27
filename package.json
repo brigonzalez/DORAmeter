@@ -47,6 +47,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@testing-library/react": "^10.4.8",
     "@types/chance": "^1.1.0",
+    "@types/config": "^0.0.36",
     "@types/hapi__joi": "^17.1.4",
     "@types/jest": "^26.0.8",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
@@ -65,10 +66,10 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "@material-ui/core": "^4.11.0",
-    "@types/config": "^0.0.36",
     "apollo-server-express": "^2.16.1",
     "chance": "^1.1.6",
     "config": "^3.3.1",
+    "date-fns": "^2.16.1",
     "db-migrate": "^0.11.11",
     "db-migrate-pg": "^1.2.2",
     "express": "^4.17.1",
@@ -79,6 +80,7 @@
     "node-fetch": "^2.6.0",
     "parcel-bundler": "^1.12.4",
     "pg": "^8.3.0",
+    "postgres-date": "^1.0.7",
     "react": "^16.13.1",
     "react-admin": "^3.7.1",
     "react-dom": "^16.13.1"

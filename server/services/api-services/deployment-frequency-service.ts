@@ -1,9 +1,33 @@
+import differenceInHours from 'date-fns/differenceInHours';
+// @ts-ignore
+import postgresDateParse from 'postgres-date';
+
+import {getAppByAppName} from '../domain-services/app-service';
+import {getLastEventByAppIdAndEventTypeId} from '../domain-services/event-service';
+import {getEventTypeByEventType} from '../domain-services/event-type-service';
+import {getMetricGoalByMetric} from '../domain-services/metric-service';
+
+const rating_map = {
+    elite_goal: 'ELITE',
+    high_goal: 'HIGH',
+    low_goal: 'LOW',
+    medium_goal: 'MEDIUM'
+};
+
 export default async (appName: string) => {
-    // TODO: df implementation
-    // get app by app name
-    // get event type id by event type
-    // get last event by app id and event type id
-    // calculate the difference between the last 2 deployment times
-    // get the metric goal for deployment frequency
-    // return app data, rating, and deployment timestamps
+    const {app_id} = await getAppByAppName(appName);
+    const {event_type_id} = await getEventTypeByEventType('DEPLOYMENT');
+    const {created_timestamp} = await getLastEventByAppIdAndEventTypeId(app_id, event_type_id);
+    const lastDeploymentDate = postgresDateParse(created_timestamp);
+    const differenceBWCurrentTimeAndLastDeploymentDate = differenceInHours(lastDeploymentDate, new Date());
+    const metricGoals = await getMetricGoalByMetric('DEPLOYMENT_FREQUENCY');
+    const correspondingMetricGoal = Object.keys(metricGoals).find((metricGoal) =>
+        // @ts-ignore
+        metricGoals[metricGoal] <= differenceBWCurrentTimeAndLastDeploymentDate);
+
+    return {
+        lastDeploymentTimestamp: lastDeploymentDate,
+        // @ts-ignore
+        rating: rating_map[correspondingMetricGoal]
+    };
 };

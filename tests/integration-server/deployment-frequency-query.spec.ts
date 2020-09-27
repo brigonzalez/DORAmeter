@@ -67,7 +67,6 @@ describe('deployment frequency query', () => {
                     deploymentFrequency {
                         rating
                         lastDeploymentTimestamp
-                        followingDeploymentTimestamp
                     }
                 }
             }
@@ -76,10 +75,11 @@ describe('deployment frequency query', () => {
         return JSON.parse(data);
     };
 
+    // need to modify lastDeploymentTimestamps to be current date minus whatever test we're running
+
     describe('elite performing deployment frequency app', () => {
         const elitePerformingAppName = chance.word();
         const lastDeploymentTimestamp = '2020-08-20 18:43:03.028739';
-        const followingDeploymentTimestamp = '2020-08-20 17:43:03.028739';
 
         let appId: string;
 
@@ -92,7 +92,6 @@ describe('deployment frequency query', () => {
 
             expect(data.app).toStrictEqual({
                 deploymentFrequency: {
-                    followingDeploymentTimestamp,
                     lastDeploymentTimestamp,
                     rating: 'ELITE'
                 },
@@ -105,7 +104,6 @@ describe('deployment frequency query', () => {
     describe('high performing deployment frequency app', () => {
         const highPerformingAppName = chance.word();
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
-        const followingDeploymentTimestamp = '2020-08-20 12:43:03.028739';
 
         let appId: string;
 
@@ -118,7 +116,6 @@ describe('deployment frequency query', () => {
 
             expect(data.app).toStrictEqual({
                 deploymentFrequency: {
-                    followingDeploymentTimestamp,
                     lastDeploymentTimestamp,
                     rating: 'HIGH'
                 },
@@ -131,7 +128,6 @@ describe('deployment frequency query', () => {
     describe('medium performing deployment frequency app', () => {
         const mediumPerformingAppName = chance.word();
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
-        const followingDeploymentTimestamp = '2020-08-14 10:43:03.028739';
 
         let appId: string;
 
@@ -144,7 +140,6 @@ describe('deployment frequency query', () => {
 
             expect(data.app).toStrictEqual({
                 deploymentFrequency: {
-                    followingDeploymentTimestamp,
                     lastDeploymentTimestamp,
                     rating: 'MEDIUM'
                 },
@@ -157,7 +152,6 @@ describe('deployment frequency query', () => {
     describe('low performing deployment frequency app', () => {
         const lowPerformingAppName = chance.word();
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
-        const followingDeploymentTimestamp = '2020-07-20 08:43:03.028739';
 
         let appId: string;
 
@@ -170,7 +164,6 @@ describe('deployment frequency query', () => {
 
             expect(data.app).toStrictEqual({
                 deploymentFrequency: {
-                    followingDeploymentTimestamp,
                     lastDeploymentTimestamp,
                     rating: 'LOW'
                 },
@@ -183,7 +176,6 @@ describe('deployment frequency query', () => {
     describe('nonperforming deployment frequency app', () => {
         const nonPerformingAppName = chance.word();
         const lastDeploymentTimestamp = '2020-08-21 14:43:03.028739';
-        const followingDeploymentTimestamp = '2020-01-20 09:43:03.028739';
 
         let appId: string;
 
@@ -196,7 +188,6 @@ describe('deployment frequency query', () => {
 
             expect(data.app).toStrictEqual({
                 deploymentFrequency: {
-                    followingDeploymentTimestamp,
                     lastDeploymentTimestamp,
                     rating: 'NONE'
                 },

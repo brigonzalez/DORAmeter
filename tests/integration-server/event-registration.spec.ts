@@ -49,6 +49,8 @@ describe('event registration controller', () => {
         test('should return a 201 response with an empty body', async () => {
             const response = await registerEventWithPOSTRequest();
 
+            console.log(response);
+
             expect(response.status).toBe(CREATED);
             expect(response.headers.get('content-length')).toBe('0');
         });
