@@ -48,12 +48,10 @@ describe('deployment frequency query', () => {
     };
 
     const setupTestsForDeploymentFrequency = async (appName: string,
-        lastDeploymentTimestamp: string,
-        followingDeploymentTimestamp: string) => {
+        lastDeploymentTimestamp: string) => {
         const appId = await insertApp(appName);
 
         await insertEvent(appId, lastDeploymentTimestamp);
-        await insertEvent(appId, followingDeploymentTimestamp);
 
         return appId;
     };
@@ -84,7 +82,7 @@ describe('deployment frequency query', () => {
         let appId: string;
 
         beforeAll(async () => {
-            appId = await setupTestsForDeploymentFrequency(elitePerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(elitePerformingAppName, lastDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -108,7 +106,7 @@ describe('deployment frequency query', () => {
         let appId: string;
 
         beforeAll(async () => {
-            appId = await setupTestsForDeploymentFrequency(highPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(highPerformingAppName, lastDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -132,7 +130,7 @@ describe('deployment frequency query', () => {
         let appId: string;
 
         beforeAll(async () => {
-            appId = await setupTestsForDeploymentFrequency(mediumPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(mediumPerformingAppName, lastDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -156,7 +154,7 @@ describe('deployment frequency query', () => {
         let appId: string;
 
         beforeAll(async () => {
-            appId = await setupTestsForDeploymentFrequency(lowPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(lowPerformingAppName, lastDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {
@@ -180,7 +178,7 @@ describe('deployment frequency query', () => {
         let appId: string;
 
         beforeAll(async () => {
-            appId = await setupTestsForDeploymentFrequency(nonPerformingAppName, lastDeploymentTimestamp, followingDeploymentTimestamp);
+            appId = await setupTestsForDeploymentFrequency(nonPerformingAppName, lastDeploymentTimestamp);
         });
 
         test('should return elite rating for deployment frequency app', async () => {

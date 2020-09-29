@@ -3,10 +3,9 @@ import {getAppByAppNameFromRepository, createAppInRepository} from '../services/
 import {getDBClient} from './database-connection';
 
 const APP_TABLE = 'app';
-const dbClient = getDBClient();
 
 export const selectAppByAppName: getAppByAppNameFromRepository = async (name) => {
-    const [app] = await dbClient
+    const [app] = await getDBClient()
         .select('app_id', 'name')
         .from(APP_TABLE)
         .where({
@@ -17,7 +16,7 @@ export const selectAppByAppName: getAppByAppNameFromRepository = async (name) =>
 };
 
 export const insertApp: createAppInRepository = async (app) => {
-    const [createdApp] = await dbClient
+    const [createdApp] = await getDBClient()
         .returning('*')
         .insert(app)
         .into(APP_TABLE);

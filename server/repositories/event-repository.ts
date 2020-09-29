@@ -6,10 +6,9 @@ import {
 import {getDBClient} from './database-connection';
 
 const EVENT_TABLE = 'event';
-const dbClient = getDBClient();
 
 export const insertEvent: createEventInRepository = async (event) => {
-    const [createdEvent] = await dbClient
+    const [createdEvent] = await getDBClient()
         .returning('*')
         .insert(event)
         .into(EVENT_TABLE);
@@ -19,8 +18,8 @@ export const insertEvent: createEventInRepository = async (event) => {
 
 export const selectLastEventByAppIdAndEventTypeId: getLastEventByAppIdAndEventTypeIdInRepository
     = async (app_id, event_type_id) => {
-        const [event] = await dbClient
-            .first('event_id', 'app_id', 'event_type_id', 'created_timestamp')
+        const [event] = await getDBClient()
+            .select('event_id', 'app_id', 'event_type_id', 'created_timestamp')
             .from(EVENT_TABLE)
             .where({
                 app_id,

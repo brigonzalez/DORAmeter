@@ -19,16 +19,17 @@ exports.up = function (db) {
         CREATE TABLE dorameter.metric_goal
         (
             metric_goal_id UUID UNIQUE NOT NULL,
-            elite_goal     TEXT NOT NULL,
-            high_goal      TEXT NOT NULL,
-            medium_goal    TEXT NOT NULL,
-            low_goal       TEXT NOT NULL,
+            elite_goal     NUMERIC NOT NULL,
+            high_goal      NUMERIC NOT NULL,
+            medium_goal    NUMERIC NOT NULL,
+            low_goal       NUMERIC NOT NULL,
+            unit           TEXT NOT NULL,
             CONSTRAINT metric_goal_pk PRIMARY KEY (metric_goal_id)
         );
-        INSERT INTO dorameter.metric_goal (metric_goal_id, elite_goal, high_goal, medium_goal, low_goal)
-        VALUES ('2F339B14-8978-4557-8BAE-ED546018D451', '24 H', '168 H', '672 H', '4032 H'),
-               ('BBFC3A39-621F-4F00-8326-136AC7D494C0', '1 H', '24 H', '168 H', '672 H'),
-               ('5667C118-5563-43DC-B3C8-3A7DCE3B3E09', '15 %', '30 %', '45 %', '60 %');
+        INSERT INTO dorameter.metric_goal (metric_goal_id, elite_goal, high_goal, medium_goal, low_goal, unit)
+        VALUES ('2F339B14-8978-4557-8BAE-ED546018D451', 24, 168, 672, 4032, 'HOURS'),
+               ('BBFC3A39-621F-4F00-8326-136AC7D494C0', 1, 24, 168, 672, 'HOURS'),
+               ('5667C118-5563-43DC-B3C8-3A7DCE3B3E09', 15, 30, 45, 60, 'PERCENT');
         CREATE TABLE dorameter.metric
         (
             metric_id UUID NOT NULL,
