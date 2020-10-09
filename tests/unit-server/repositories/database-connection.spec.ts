@@ -12,13 +12,13 @@ describe('database connection', () => {
     const chance = new Chance();
 
     describe('getDBClient', () => {
-        let expectedKnexClient,
-            expectedPGConnectionString;
+        let expectedKnexClient: string,
+            expectedPGConnectionString: string;
 
         beforeEach(() => {
             expectedKnexClient = chance.string();
             expectedPGConnectionString = chance.string();
-            (knex as jest.Mock).mockReturnValue(expectedKnexClient);
+            (knex as unknown as jest.Mock).mockReturnValue(expectedKnexClient);
             when(config.get).calledWith('pg-connection-string').mockReturnValue(expectedPGConnectionString);
         });
 
