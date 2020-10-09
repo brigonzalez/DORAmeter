@@ -19,8 +19,8 @@ exports.up = function (db) {
     return db.runSql(`
           CREATE TABLE dorameter.event_type
           (
-            event_type_id   UUID NOT NULL,
-            event_type      TEXT NOT NULL,
+            event_type_id   UUID UNIQUE NOT NULL,
+            event_type      TEXT UNIQUE NOT NULL,
             CONSTRAINT event_type_pk PRIMARY KEY (event_type_id)
           );
           INSERT INTO dorameter.event_type (event_type_id, event_type)

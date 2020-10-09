@@ -1,11 +1,11 @@
 import Chance from 'chance';
 
-import {logError} from '../../../server/server-services/logger-service';
-import {selectOne} from '../../../server/repositories/healthz-repository';
-import {areRepositoriesHealthy} from '../../../server/services/healthz-services';
+import {logError} from '../../../../server/server-infra/logger-service';
+import {selectOne} from '../../../../server/repositories/healthz-repository';
+import {areRepositoriesHealthy} from '../../../../server/services/api-services/healthz-services';
 
-jest.mock('../../../server/repositories/healthz-repository');
-jest.mock('../../../server/server-services/logger-service');
+jest.mock('../../../../server/repositories/healthz-repository');
+jest.mock('../../../../server/server-infra/logger-service');
 
 describe('healthz services', () => {
     const chance = new Chance();
@@ -26,7 +26,7 @@ describe('healthz services', () => {
         });
 
         describe('areRepositoriesHealthy returns unsuccessfully', () => {
-            let expectedError;
+            let expectedError: string;
 
             beforeEach(() => {
                 expectedError = chance.string();

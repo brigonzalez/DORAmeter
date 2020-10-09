@@ -1,6 +1,5 @@
 {
   "cacheDirectory": ".jest-cache",
-  "coverageReporters": ["json-summary", "lcov"],
   "preset": "ts-jest",
   "transform": {
     ".(ts|tsx)": "ts-jest"
@@ -17,6 +16,14 @@
       "testMatch": [
         "<rootDir>/tests/unit-client/**/*.spec.ts"
       ],
+      "coverageProvider": "v8",
+      "collectCoverage": true,
+      "coverageReporters": ["json-summary", "lcov"],
+      "collectCoverageFrom": [
+        "**/*.{ts,tsx,js,jsx}",
+        "!**/node_modules/**",
+        "!**/vendor/**"
+      ],
       "coveragePathIgnorePatterns": [
         "<rootDir>/tests/"
       ]
@@ -26,6 +33,14 @@
       "testEnvironment": "node",
       "testMatch": [
         "<rootDir>/tests/unit-server/**/*.spec.ts"
+      ],
+      "collectCoverage": true,
+      "coverageProvider": "v8",
+      "coverageReporters": ["json-summary", "lcov"],
+      "collectCoverageFrom": [
+        "**/*.{ts,tsx,js,jsx}",
+        "!**/node_modules/**",
+        "!**/vendor/**"
       ],
       "coveragePathIgnorePatterns": [
         "<rootDir>/tests/"
@@ -37,6 +52,14 @@
       "testMatch": [
         "<rootDir>/tests/integration-server/**/*.spec.ts"
       ],
+      "collectCoverage": true,
+      "coverageProvider": "v8",
+      "coverageReporters": ["json-summary", "lcov"],
+      "collectCoverageFrom": [
+        "**/*.{ts,tsx,js,jsx}",
+        "!**/node_modules/**",
+        "!**/vendor/**"
+      ],
       "coveragePathIgnorePatterns": [
         "<rootDir>/server/repositories/migrations/",
         "<rootDir>/tests/"
@@ -45,10 +68,10 @@
   ],
   "coverageThreshold": {
     "global": {
-      "branches": 100,
-      "functions": 100,
-      "lines": 100,
-      "statements": 100
+      "statements": 90,
+      "branches": 90,
+      "lines": 90,
+      "functions": 90
     }
   }
 }

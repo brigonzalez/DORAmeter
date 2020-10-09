@@ -20,8 +20,8 @@ exports.up = function (db) {
         CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
         CREATE TABLE dorameter.app
         (
-          app_id        UUID NOT NULL DEFAULT uuid_generate_v1(),
-          name          TEXT NOT NULL,
+          app_id        UUID UNIQUE NOT NULL DEFAULT uuid_generate_v4(),
+          name          TEXT UNIQUE NOT NULL,
           CONSTRAINT app_pk PRIMARY KEY (app_id)
         );
   `);

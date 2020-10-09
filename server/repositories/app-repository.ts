@@ -1,12 +1,11 @@
-import {getAppFromRepository, createAppInRepository} from '../services/app-service';
+import {getAppByAppNameFromRepository, createAppInRepository} from '../services/domain-services/app-service';
 
 import {getDBClient} from './database-connection';
 
 const APP_TABLE = 'app';
 
-export const selectAppByAppName: getAppFromRepository = async (name) => {
-    const dbClient = getDBClient();
-    const [app] = await dbClient
+export const selectAppByAppName: getAppByAppNameFromRepository = async (name) => {
+    const [app] = await getDBClient()
         .select('app_id', 'name')
         .from(APP_TABLE)
         .where({
@@ -17,8 +16,7 @@ export const selectAppByAppName: getAppFromRepository = async (name) => {
 };
 
 export const insertApp: createAppInRepository = async (app) => {
-    const dbClient = getDBClient();
-    const [createdApp] = await dbClient
+    const [createdApp] = await getDBClient()
         .returning('*')
         .insert(app)
         .into(APP_TABLE);

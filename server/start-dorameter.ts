@@ -1,3 +1,3 @@
-import {startServer} from './server-services/web-server';
+import {startServer} from './server-infra/web-server';
 
 startServer();

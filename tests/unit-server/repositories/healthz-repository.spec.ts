@@ -13,7 +13,7 @@ describe('healthz repositoy', () => {
     });
 
     describe('selectOne', () => {
-        let expectedDBClient;
+        let expectedDBClient: {select: any};
 
         beforeEach(() => {
             expectedDBClient = {
@@ -37,7 +37,7 @@ describe('healthz repositoy', () => {
         });
 
         describe('select 1 throws and error', () => {
-            let expectedError;
+            let expectedError: string;
 
             beforeEach(() => {
                 expectedError = chance.string();

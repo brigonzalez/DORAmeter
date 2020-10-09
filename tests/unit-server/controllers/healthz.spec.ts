@@ -1,13 +1,13 @@
 import {OK} from 'http-status';
 
 import {handler} from '../../../server/controllers/healthz';
-import {areRepositoriesHealthy} from '../../../server/services/healthz-services';
+import {areRepositoriesHealthy} from '../../../server/services/api-services/healthz-services';
 
-jest.mock('../../../server/services/healthz-services');
+jest.mock('../../../server/services/api-services/healthz-services');
 
 describe('healthz controller', () => {
     describe('handler', () => {
-        let expectedResponse;
+        let expectedResponse: any;
 
         beforeEach(() => {
             expectedResponse = {
@@ -18,6 +18,7 @@ describe('healthz controller', () => {
         });
 
         test('should check that the repository is healthy', async () => {
+            // @ts-ignore
             await handler(null, expectedResponse);
 
             expect(areRepositoriesHealthy).toHaveBeenCalledTimes(1);
@@ -26,6 +27,7 @@ describe('healthz controller', () => {
 
         describe('areRepositoriesHealthy returns falsey', () => {
             test('should return an OK with the right body', async () => {
+                // @ts-ignore
                 await handler(null, expectedResponse);
 
                 expect(expectedResponse.status).toHaveBeenCalledTimes(1);
@@ -47,6 +49,7 @@ describe('healthz controller', () => {
             });
 
             test('should return an OK with the right body', async () => {
+                // @ts-ignore
                 await handler(null, expectedResponse);
 
                 expect(expectedResponse.status).toHaveBeenCalledTimes(1);
