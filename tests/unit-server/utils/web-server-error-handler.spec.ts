@@ -1,7 +1,7 @@
 import Chance from 'chance';
 import {INTERNAL_SERVER_ERROR, BAD_REQUEST} from 'http-status';
 
-import webServerErrorHandler from '../../../server/utils/web-server-error-handler';
+import webServerErrorHandler from '../../../server/utils/rest-error-handler';
 
 describe('web-server-error-handler', () => {
     const chance = new Chance();
