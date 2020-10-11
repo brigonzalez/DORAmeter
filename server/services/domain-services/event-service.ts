@@ -1,4 +1,5 @@
 import {insertEvent, selectLastEventByAppIdAndEventTypeId} from '../../repositories/event-repository';
+import {logInfo} from '../../server-infra/logger-service';
 
 export interface createEventInRepository {
     (event: {
@@ -14,8 +15,11 @@ export interface createEventInRepository {
 export const createEvent = (event: {
         app_id: string,
         event_type_id: string,
-    }) =>
-    insertEvent(event);
+    }) => {
+    logInfo(`Inserting event: event ${JSON.stringify(event, null, 2)}`);
+
+    return insertEvent(event);
+};
 
 export interface getLastEventByAppIdAndEventTypeIdInRepository {
     (app_id: string, event_type_id: string): Promise<{
@@ -26,5 +30,8 @@ export interface getLastEventByAppIdAndEventTypeIdInRepository {
     }>
 }
 
-export const getLastEventByAppIdAndEventTypeId = (appId: string, eventTypeId: string) =>
-    selectLastEventByAppIdAndEventTypeId(appId, eventTypeId);
+export const getLastEventByAppIdAndEventTypeId = (appId: string, eventTypeId: string) => {
+    logInfo(`Selecting last event by appId and eventTypeId: appId: ${appId}, eventTypeId: ${eventTypeId}`);
+
+    return selectLastEventByAppIdAndEventTypeId(appId, eventTypeId);
+};

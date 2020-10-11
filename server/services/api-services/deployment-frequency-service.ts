@@ -6,6 +6,7 @@ import {getAppByAppName} from '../domain-services/app-service';
 import {getLastEventByAppIdAndEventTypeId} from '../domain-services/event-service';
 import {getEventTypeByEventType} from '../domain-services/event-type-service';
 import {getMetricGoalByMetric} from '../domain-services/metric-service';
+import {logError, logInfo} from '../../server-infra/logger-service';
 
 const mapRating = (rating: string | null) => {
     switch (rating) {
@@ -60,13 +61,22 @@ const getDeploymentFrequencyRating = async (lastDeploymentDate: Date) => {
 };
 
 export default async (appName: string) => {
-    const {app_id} = await getAppByAppName(appName);
-    const lastDeploymentDate = await getLastDeploymentDateForApp(app_id);
+    try {
+        logInfo('Getting deployment frequency');
+        const {app} = await getAppByAppName(appName);
+        const lastDeploymentDate = await getLastDeploymentDateForApp(app.app_id);
+        const rating = getDeploymentFrequencyRating(lastDeploymentDate);
 
-    const rating = getDeploymentFrequencyRating(lastDeploymentDate);
+        return {
+            error: null,
+            lastDeploymentTimestamp: lastDeploymentDate.toISOString(),
+            rating
+        };
+    } catch (error) {
+        logError(error);
 
-    return {
-        lastDeploymentTimestamp: lastDeploymentDate.toISOString(),
-        rating
-    };
+        return {
+            error
+        };
+    }
 };

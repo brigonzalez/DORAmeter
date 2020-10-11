@@ -1,6 +1,6 @@
 import joi from '@hapi/joi';
 
-import {logError} from '../../server-infra/logger-service';
+import {logError, logInfo} from '../../server-infra/logger-service';
 import {getAppByAppName, createApp} from '../domain-services/app-service';
 import {getEventTypeByEventType} from '../domain-services/event-type-service';
 import {createEvent} from '../domain-services/event-service';
@@ -28,7 +28,8 @@ export default async (event: {
             };
         }
 
-        let app = await getAppByAppName(event.appName);
+        logInfo('Registering event');
+        let {app} = await getAppByAppName(event.appName);
 
         if (!app) {
             app = await createApp(event.appName);

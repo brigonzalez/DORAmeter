@@ -11,8 +11,6 @@ describe('event registration controller', () => {
     const chance = new Chance();
 
     describe('POST', () => {
-        const dbClient = getDBClient();
-
         let expectedEventBody: any,
             createdAppId: string;
 
@@ -53,7 +51,7 @@ describe('event registration controller', () => {
             });
 
             test('should write app to database', async () => {
-                const [app] = await dbClient
+                const [app] = await getDBClient()
                     .select('app_id', 'name')
                     .from('app')
                     .where({
@@ -66,7 +64,7 @@ describe('event registration controller', () => {
 
             test('should not create a new app if one was already created', async () => {
                 await registerEventWithPOSTRequest();
-                const [app, expectedlyNonExistentApp] = await dbClient
+                const [app, expectedlyNonExistentApp] = await getDBClient()
                     .select('app_id', 'name')
                     .from('app')
                     .where({
@@ -78,7 +76,7 @@ describe('event registration controller', () => {
             });
 
             test('should event to database', async () => {
-                const [event] = await dbClient
+                const [event] = await getDBClient()
                     .select('event_id', 'app_id')
                     .from('event')
                     .where({
@@ -90,13 +88,13 @@ describe('event registration controller', () => {
             });
 
             test('should add the correct event_type_id in the event', async () => {
-                const [event] = await dbClient
+                const [event] = await getDBClient()
                     .select('event_type_id')
                     .from('event')
                     .where({
                         app_id: createdAppId
                     });
-                const [eventType] = await dbClient
+                const [eventType] = await getDBClient()
                     .select('event_type')
                     .from('event_type')
                     .where({
