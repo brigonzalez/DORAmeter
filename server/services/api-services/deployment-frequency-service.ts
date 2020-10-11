@@ -63,11 +63,12 @@ const getDeploymentFrequencyRating = async (lastDeploymentDate: Date) => {
 export default async (appName: string) => {
     try {
         logInfo('Getting deployment frequency');
-        const {app_id} = await getAppByAppName(appName);
-        const lastDeploymentDate = await getLastDeploymentDateForApp(app_id);
+        const {app} = await getAppByAppName(appName);
+        const lastDeploymentDate = await getLastDeploymentDateForApp(app.app_id);
         const rating = getDeploymentFrequencyRating(lastDeploymentDate);
 
         return {
+            error: null,
             lastDeploymentTimestamp: lastDeploymentDate.toISOString(),
             rating
         };

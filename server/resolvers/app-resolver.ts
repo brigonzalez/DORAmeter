@@ -7,7 +7,7 @@ const mapToGQLResponse = (app: {app_id: string, name: string}) => ({
 });
 
 export default async (_: any, {name}: {name: string}) => {
-    const {error, ...app} = await getAppByAppName(name);
+    const {error, app} = await getAppByAppName(name);
 
     if (error) {
         return graphqlErrorHandler(error);

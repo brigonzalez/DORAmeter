@@ -29,7 +29,7 @@ export default async (event: {
         }
 
         logInfo('Registering event');
-        let app = await getAppByAppName(event.appName);
+        let {app} = await getAppByAppName(event.appName);
 
         if (!app) {
             app = await createApp(event.appName);
