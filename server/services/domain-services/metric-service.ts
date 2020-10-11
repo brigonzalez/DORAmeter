@@ -1,4 +1,5 @@
 import {selectMetricGoalByMetric} from '../../repositories/metric-repository';
+import {logInfo} from '../../server-infra/logger-service';
 
 export interface getMetricGoalByMetricFromRepository {
     (metric: string): Promise<{
@@ -9,5 +10,8 @@ export interface getMetricGoalByMetricFromRepository {
     }>
 }
 
-export const getMetricGoalByMetric = (metric: string) =>
-    selectMetricGoalByMetric(metric);
+export const getMetricGoalByMetric = (metric: string) => {
+    logInfo(`Selecting metric goal by metric: metric: ${metric}`);
+
+    return selectMetricGoalByMetric(metric);
+};
