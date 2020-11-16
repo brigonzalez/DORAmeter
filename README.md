@@ -18,4 +18,6 @@ POST domain.com/event
 }
 ```
 
-This project is still a WIP
+This project is still a WIP.
+
+This project is also being used for testing the relationship between test suite quality and test suite fragility. More info on that [here](https://github.com/brigonzalez/DORAmeter/wiki/Test-Suite-Quality-vs-Test-Suite-Fragility-Experiment)
