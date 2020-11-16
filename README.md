@@ -17,3 +17,5 @@ POST domain.com/event
   "eventType": "DEPLOYMENT" | "CODE_COMMITTED" | "SUCCESSFUL_TEST" | "UNSUCCESSFUL_TEST"
 }
 ```
+
+This project is still a WIP
