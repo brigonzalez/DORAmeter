@@ -12,7 +12,8 @@ To test:
 1. Start with `yarn` and `yarn dev` (Uses Docker to start up app and dependencies)
 2. To capture an event with this app, make the following HTTP request:
 ```
-POST localhost.com/event
+POST localhost:4444/event
+JSON Request Body:
 {
   "appName": "app a",
   "buildId": "someBuildId",
@@ -20,15 +21,15 @@ POST localhost.com/event
 }
 ```
 
-This API saves events through a RESTful API and will query those saved events through graphql for its frontend. To see the data for the UI:
+This API saves events through a RESTful API and will query those saved events through GraphQL for its frontend. To see the data for the UI:
 1. Visit `http://localhost:4444/graphql`
-2. To retrieve `deployment-frequency` make the following query:
+2. To retrieve the deployment frequency of "app a" make the following query:
 ```graphql
 {
   app(name: "app a") {
     deploymentFrequency {
       lastDeploymentTimestamp
-			rating
+      rating
     }
   }
 }
