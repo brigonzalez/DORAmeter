@@ -1,12 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {Admin, Resource} from 'react-admin';
+
+import Header from './components/Header';
+
+import './css/app.scss';
 
 const App = () =>
-    <Admin>
-        <Resource
-            name="users"
-        />
-    </Admin>;
+    <div className={'app'}>
+        <Header />
+    </div>;
 
 ReactDOM.render(<App />, document.querySelector('#app'));

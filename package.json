@@ -53,6 +53,7 @@
     "@types/jest-when": "^2.7.1",
     "@types/pino": "^6.3.2",
     "@types/pino-http": "^5.0.5",
+    "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "babel-core": "^6.26.3",
@@ -64,6 +65,7 @@
     "jest-when": "^2.7.2",
     "pino-pretty": "^4.3.0",
     "rimraf": "^3.0.2",
+    "sass": "^1.30.0",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   },
@@ -86,8 +88,7 @@
     "pg": "^8.3.0",
     "pino": "^6.7.0",
     "pino-http": "^5.3.0",
-    "react": "^16.13.1",
-    "react-admin": "^3.7.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
