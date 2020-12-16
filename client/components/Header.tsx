@@ -3,7 +3,7 @@ import React from 'react';
 import '../css/header.scss';
 
 // @ts-ignore
-import DORAmeterLogo from '../assets/DORAmeter-logo@50px.png';
+import DORAmeterLogo from '../assets/DORAmeter-logo.png';
 
 const Header = () =>
     <div className={'header'}>
