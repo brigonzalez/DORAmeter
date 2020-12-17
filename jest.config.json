@@ -16,7 +16,6 @@
       "testMatch": [
         "<rootDir>/tests/unit-client/**/*.spec.ts"
       ],
-      "coverageProvider": "v8",
       "collectCoverage": true,
       "coverageReporters": ["json-summary", "lcov"],
       "collectCoverageFrom": [
@@ -26,7 +25,10 @@
       ],
       "coveragePathIgnorePatterns": [
         "<rootDir>/tests/"
-      ]
+      ],
+      "moduleNameMapper": {
+        "\\.(css|scss|svg)$": "<rootDir>/tests/stubs/empty-stub.js"
+      }
     },
     {
       "displayName": "unit-server",
@@ -35,7 +37,6 @@
         "<rootDir>/tests/unit-server/**/*.spec.ts"
       ],
       "collectCoverage": true,
-      "coverageProvider": "v8",
       "coverageReporters": ["json-summary", "lcov"],
       "collectCoverageFrom": [
         "**/*.{ts,tsx,js,jsx}",
@@ -53,7 +54,6 @@
         "<rootDir>/tests/integration-server/**/*.spec.ts"
       ],
       "collectCoverage": true,
-      "coverageProvider": "v8",
       "coverageReporters": ["json-summary", "lcov"],
       "collectCoverageFrom": [
         "**/*.{ts,tsx,js,jsx}",
