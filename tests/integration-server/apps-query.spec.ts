@@ -12,9 +12,10 @@ describe('apps query', () => {
     const dbClient = getDBClient();
     const gqlClient = new GraphQLClient(`${LOCALHOST_URL}/graphql`);
 
-    let appId: string,
-        highPerformingAppName: string,
-        lastDeploymentTimestamp: Date;
+    let firstAppName: string,
+        secondAppName: string,
+        firstDeploymentTimestamp: Date,
+        secondDeploymentTimestamp: Date;
 
     const insertApp = async (appName: string) => {
         const [{app_id}] = await dbClient
@@ -27,7 +28,7 @@ describe('apps query', () => {
         return app_id;
     };
 
-    const insertEvent = async (appId: string, createdTimestamp: string) => {
+    const insertEvent = async (appIdToInsert: string, createdTimestamp: string) => {
         const [{event_type_id}] = await dbClient
             .select('event_type_id', 'event_type')
             .from('event_type')
@@ -37,22 +38,28 @@ describe('apps query', () => {
 
         await dbClient
             .insert({
-                app_id: appId,
+                app_id: appIdToInsert,
                 created_timestamp: createdTimestamp,
                 event_type_id
             })
             .into('event');
     };
 
-    const setupTestsForDeploymentFrequency = async (
-        appName: string,
-        deploymentTimestamp: Date
-    ) => {
-        const appIdForAppInsert = await insertApp(appName);
+    const setupTestsForDeploymentFrequency = async () => {
+        firstAppName = chance.word();
+        secondAppName = chance.word();
+        firstDeploymentTimestamp = sub(new Date(), {
+            days: chance.d6() + 1
+        });
+        secondDeploymentTimestamp = sub(new Date(), {
+            days: chance.d6() + 1
+        });
 
-        await insertEvent(appIdForAppInsert, deploymentTimestamp.toISOString());
+        const appIdForAppInsert1 = await insertApp(firstAppName);
+        const appIdForAppInsert2 = await insertApp(secondAppName);
 
-        return appId;
+        await insertEvent(appIdForAppInsert1, firstDeploymentTimestamp.toISOString());
+        await insertEvent(appIdForAppInsert2, secondDeploymentTimestamp.toISOString());
     };
 
     const makeGQLRequestToRetrieveDeploymentFrequency = async () => {
@@ -74,11 +81,7 @@ describe('apps query', () => {
 
     beforeAll(async () => {
         await startDORAMeterIfNotRunning();
-        highPerformingAppName = chance.word();
-        lastDeploymentTimestamp = sub(new Date(), {
-            days: chance.d6() + 1
-        });
-        appId = await setupTestsForDeploymentFrequency(highPerformingAppName, lastDeploymentTimestamp);
+        await setupTestsForDeploymentFrequency();
     });
 
     afterAll(async () => {
@@ -87,14 +90,18 @@ describe('apps query', () => {
 
     test('should return all metrics for all apps', async () => {
         const data = await makeGQLRequestToRetrieveDeploymentFrequency();
+        const firstAppDeploymentFrequency = data.apps.find((app: {name: string}) =>
+            app.name === firstAppName).deploymentFrequency;
+        const secondAppDeploymentFrequency = data.apps.find((app: {name: string}) =>
+            app.name === secondAppName).deploymentFrequency;
 
-        expect(data.app).toStrictEqual({
-            deploymentFrequency: {
-                lastDeploymentTimestamp: lastDeploymentTimestamp.toISOString(),
-                rating: 'HIGH'
-            },
-            id: appId,
-            name: highPerformingAppName
+        expect(firstAppDeploymentFrequency).toStrictEqual({
+            lastDeploymentTimestamp: firstDeploymentTimestamp.toISOString(),
+            rating: 'HIGH'
+        });
+        expect(secondAppDeploymentFrequency).toStrictEqual({
+            lastDeploymentTimestamp: secondDeploymentTimestamp.toISOString(),
+            rating: 'HIGH'
         });
     });
 });

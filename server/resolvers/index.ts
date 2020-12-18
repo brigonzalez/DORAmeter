@@ -1,4 +1,4 @@
-import appResolver from './app-resolver';
+import {appByNameResolver, appsResolver} from './app-resolver';
 import deploymentFrequencyResolver from './deployment-frequency-resolver';
 
 export default ({
@@ -6,6 +6,7 @@ export default ({
         deploymentFrequency: deploymentFrequencyResolver
     },
     Query: {
-        app: appResolver
+        app: appByNameResolver,
+        apps: appsResolver
     }
 });

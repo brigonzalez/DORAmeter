@@ -1,6 +1,7 @@
 import differenceInHours from 'date-fns/differenceInHours';
 import parseJSON from 'date-fns/parseJSON';
 import format from 'date-fns/format';
+import getDate from 'date-fns/getDate';
 
 import {getAppByAppName} from '../domain-services/app-service';
 import {getLastEventByAppIdAndEventTypeId} from '../domain-services/event-service';
@@ -25,8 +26,15 @@ const mapRating = (rating: string | null) => {
 
 const getLastDeploymentDateForApp = async (app_id: string) => {
     const {event_type_id} = await getEventTypeByEventType('DEPLOYMENT');
-    const {created_timestamp} = await getLastEventByAppIdAndEventTypeId(app_id, event_type_id);
-    const stringUTCLastDeploymentDate = parseJSON(created_timestamp);
+    let lastEvent: {created_timestamp: any} = await getLastEventByAppIdAndEventTypeId(app_id, event_type_id);
+
+    if (!lastEvent) {
+        lastEvent = {
+            created_timestamp: getDate(new Date(1969, 12, 28))
+        };
+    }
+
+    const stringUTCLastDeploymentDate = parseJSON(lastEvent.created_timestamp);
     const localLastDeploymentDate = format(stringUTCLastDeploymentDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx");
 
     return parseJSON(localLastDeploymentDate);

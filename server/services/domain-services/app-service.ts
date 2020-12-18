@@ -1,4 +1,4 @@
-import {selectAppByAppName, insertApp} from '../../repositories/app-repository';
+import {selectAppByAppName, insertApp, selectAllApps} from '../../repositories/app-repository';
 import {logError, logInfo} from '../../server-infra/logger-service';
 
 export interface getAppByAppNameFromRepository {
@@ -37,4 +37,27 @@ export const createApp = (appName: string) => {
     logInfo(`Inerting app: ${appName}`);
 
     return insertApp({name: appName});
+};
+
+export interface getAllAppsFromRepository {
+    (): Promise<[{
+        app_id: string,
+        name: string
+    }]>
+}
+
+export const getAllApps = async () => {
+    try {
+        logInfo('Selecting all apps');
+        const apps = await selectAllApps();
+
+        return {
+            apps,
+            error: null
+        };
+    } catch (error) {
+        logError(error);
+
+        return error;
+    }
 };
