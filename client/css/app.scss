@@ -5,4 +5,20 @@ body {
 .app {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  flex: 1 0 10%
+}
+
+.dorameter-logo {
+  height: 50px;
+  width: 64px;
+};
+
+.app-details {
+  display: flex;
+  flex-direction: row;
 }

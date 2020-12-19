@@ -30,13 +30,13 @@ const AppDetails = () => {
     }, []);
 
     return (
-        <>
+        <div className={'app-details'}>
             {apps.map((app) =>
                 <div key={app.id}>
-                    {'asdf'}
+                    <p>{app.name}</p>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

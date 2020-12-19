@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '../css/header.scss';
-
 // @ts-ignore
 import DORAmeterLogo from '../assets/DORAmeter-logo.svg';
 
