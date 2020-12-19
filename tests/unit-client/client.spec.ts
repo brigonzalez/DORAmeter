@@ -2,20 +2,23 @@ import Chance from 'chance';
 import ReactDOM from 'react-dom';
 
 import Header from '../../client/components/Header';
+import AppDetails from '../../client/components/AppDetails';
 
 jest.mock('react-dom');
 jest.mock('../../client/components/Header');
+jest.mock('../../client/components/AppDetails');
 
 describe('client', () => {
     const chance = new Chance();
 
     let expectedSelectedDOMElement: string,
         expectedRoot: any,
-        expectedHeader: any;
+        expectedHeader: any,
+        expectedAppDetails: any;
 
     const cacheChildren = (expectedApp: any) => {
         expectedRoot = expectedApp.type();
-        expectedHeader = expectedRoot.props.children;
+        [expectedHeader, expectedAppDetails] = expectedRoot.props.children;
     };
 
     beforeAll(() => {
@@ -37,6 +40,10 @@ describe('client', () => {
 
         test('should render Header as child of div root component', () => {
             expect(expectedHeader.type).toBe(Header);
+        });
+
+        test('should render AppDetails as child of div root component', () => {
+            expect(expectedAppDetails.type).toBe(AppDetails);
         });
     });
 
