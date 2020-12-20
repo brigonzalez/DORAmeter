@@ -1,4 +1,5 @@
 body {
+  display: flex;
   background: #222222;
 }
 
@@ -7,6 +8,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
 
 .header {
@@ -21,4 +23,29 @@ body {
 .app-details {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .app-metrics {
+    min-width: 44%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app-metrics {
+    min-width: 100%;
+  }
+}
+
+.app-metrics {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 25%;
+  color: white;
+  margin: 1.5% 3%;
+}
+
+.app-metrics div {
+  margin: 2% 5%;
 }

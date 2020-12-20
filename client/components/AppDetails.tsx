@@ -32,8 +32,12 @@ const AppDetails = () => {
     return (
         <div className={'app-details'}>
             {apps.map((app) =>
-                <div key={app.id}>
+                <div key={app.id} className={'app-metrics'}>
                     <p>{app.name}</p>
+                    <div>{`Deployment Frequency: ${app.deploymentFrequency.rating}`}</div>
+                    <div>{'Lead Time: NONE'}</div>
+                    <div>{'Mean Time To Restore Service: NONE'}</div>
+                    <div>{'Change Failure: NONE'}</div>
                 </div>
             )}
         </div>
