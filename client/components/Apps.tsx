@@ -17,7 +17,6 @@ const Apps = () => {
                             name
                             deploymentFrequency {
                                 rating
-                                lastDeploymentTimestamp
                             }
                         }
                     }

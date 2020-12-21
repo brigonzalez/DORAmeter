@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 @media screen and (max-width: 768px) {
@@ -36,7 +37,7 @@ body {
 .app-metric-details {
   display: flex;
   flex-direction: column;
-  flex: 1 1 33%;
+  flex: 0 1 33%;
   color: white;
   margin: 2% 0;
 }
