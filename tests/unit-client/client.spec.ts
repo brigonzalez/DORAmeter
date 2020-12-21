@@ -1,4 +1,5 @@
 import Chance from 'chance';
+import {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from '../../client/components/Header';
@@ -35,8 +36,7 @@ describe('client', () => {
 
     describe('react-admin component', () => {
         test('should render div as root component', () => {
-            expect(expectedRoot.type).toBe('div');
-            expect(expectedRoot.props.className).toBe('app');
+            expect(expectedRoot.type).toBe(Fragment);
         });
 
         test('should render Header as child of div root component', () => {

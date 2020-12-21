@@ -1,16 +1,8 @@
 // TODO: take advantage of sass features
 body {
   font-family: Helvetica, sans-serif;
-  display: flex;
+  overflow-x: hidden;
   background: #222222;
-}
-
-.DORAmeter-app {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
 }
 
 .header {
@@ -46,6 +38,7 @@ body {
   flex-direction: column;
   flex: 1 1 33%;
   color: white;
+  margin: 2% 0;
 }
 
 .app-metric-details div {
