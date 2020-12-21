@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {gql} from '@apollo/client';
 
 import graphQLClient from '../adapters/graphql-client';
+import AppMetricDetail from './AppMetricDetail';
 
-const AppDetails = () => {
+const Apps = () => {
     const [apps, setApps] = useState([]);
 
     useEffect(() => {
@@ -30,18 +31,33 @@ const AppDetails = () => {
     }, []);
 
     return (
-        <div className={'app-details'}>
+        <div className={'apps'}>
             {apps.map((app) =>
-                <div key={app.id} className={'app-metrics'}>
-                    <p>{app.name}</p>
-                    <div>{`Deployment Frequency: ${app.deploymentFrequency.rating}`}</div>
-                    <div>{'Lead Time: NONE'}</div>
-                    <div>{'Mean Time To Restore Service: NONE'}</div>
-                    <div>{'Change Failure: NONE'}</div>
+                <div
+                    className={'app-metric-details'}
+                    key={app.id}
+                >
+                    <p className={'app-metric-details-header'}>{app.name}</p>
+                    <AppMetricDetail
+                        metric={'DF'}
+                        rating={app.deploymentFrequency.rating}
+                    />
+                    <AppMetricDetail
+                        metric={'LT'}
+                        rating={'NONE'}
+                    />
+                    <AppMetricDetail
+                        metric={'MTTR'}
+                        rating={'NONE'}
+                    />
+                    <AppMetricDetail
+                        metric={'CF'}
+                        rating={'NONE'}
+                    />
                 </div>
             )}
         </div>
     );
 };
 
-export default AppDetails;
+export default Apps;

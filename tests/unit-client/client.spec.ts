@@ -2,12 +2,13 @@ import Chance from 'chance';
 import ReactDOM from 'react-dom';
 
 import Header from '../../client/components/Header';
-import AppDetails from '../../client/components/AppDetails';
+import Apps from '../../client/components/Apps';
 
 jest.mock('react-dom');
 jest.mock('../../client/components/Header');
-jest.mock('../../client/components/AppDetails');
+jest.mock('../../client/components/Apps');
 
+// TODO: Switch out React tests to use RTL
 describe('client', () => {
     const chance = new Chance();
 
@@ -42,8 +43,8 @@ describe('client', () => {
             expect(expectedHeader.type).toBe(Header);
         });
 
-        test('should render AppDetails as child of div root component', () => {
-            expect(expectedAppDetails.type).toBe(AppDetails);
+        test('should render Apps as child of div root component', () => {
+            expect(expectedAppDetails.type).toBe(Apps);
         });
     });
 

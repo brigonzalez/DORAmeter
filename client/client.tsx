@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './components/Header';
-import AppDetails from './components/AppDetails';
+import Apps from './components/Apps';
 
-import './css/app.scss';
+import './css/main.scss';
 
 const App = () =>
-    <div className={'app'}>
+    <div className={'DORAmeter-app'}>
         <Header />
-        <AppDetails />
+        <Apps />
     </div>;
 
 ReactDOM.render(<App />, document.querySelector('#app'));

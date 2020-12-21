@@ -1,0 +1,70 @@
+// TODO: take advantage of sass features
+body {
+  font-family: Helvetica, sans-serif;
+  display: flex;
+  background: #222222;
+}
+
+.DORAmeter-app {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.header {
+  padding-top: 1%;
+  background: #222222;
+}
+
+.dorameter-logo {
+  height: 50px;
+  width: 100vw;
+};
+
+.apps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .app-metric-details {
+    min-width: 44%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app-metric-details {
+    min-width: 100%;
+  }
+}
+
+.app-metric-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 33%;
+  color: white;
+}
+
+.app-metric-details div {
+  margin: 2% 5%;
+}
+
+.app-metric-details img {
+  height: 25px;
+}
+
+.app-metric-details-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 5%;
+}
+
+.app-metric-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
