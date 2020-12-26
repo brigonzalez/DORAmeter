@@ -1,13 +1,14 @@
-// TODO: take advantage of sass features
+$background-color: #222222;
+
 body {
   font-family: Helvetica, sans-serif;
   overflow-x: hidden;
-  background: #222222;
+  background: $background-color
 }
 
 .header {
   padding-top: 1%;
-  background: #222222;
+  background: $background-color
 }
 
 .dorameter-logo {
