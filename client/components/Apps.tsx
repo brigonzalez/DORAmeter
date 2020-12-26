@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {gql} from '@apollo/client';
 
 import graphQLClient from '../adapters/graphql-client';
+
 import AppMetricDetail from './AppMetricDetail';
 
 const Apps = () => {
