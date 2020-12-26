@@ -6,7 +6,13 @@ import graphQLClient from '../adapters/graphql-client';
 import AppMetricDetail from './AppMetricDetail';
 
 const Apps = () => {
-    const [apps, setApps] = useState([]);
+    const [apps, setApps] = useState<{
+        id: string,
+        name: string,
+        deploymentFrequency: {
+            rating: string
+        }
+    }[] | []>([]);
 
     useEffect(() => {
         const getAllApps = async () => {
@@ -32,7 +38,7 @@ const Apps = () => {
 
     return (
         <div className={'apps'}>
-            {apps.map((app) =>
+            {(apps as any[]).map((app) => // eslint-disable-line no-extra-parens
                 <div
                     className={'app-metric-details'}
                     key={app.id}

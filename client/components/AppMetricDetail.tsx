@@ -11,7 +11,9 @@ import LowBadge from '../assets/Low-Badge.svg';
 // @ts-ignore
 import NoneBadge from '../assets/None-Badge.svg';
 
-const badgeMap = {
+const badgeMap: {
+    [key: string]: string
+} = {
     ELITE: EliteBadge,
     HIGH: HighBadge,
     LOW: LowBadge,
@@ -19,19 +21,21 @@ const badgeMap = {
     NONE: NoneBadge
 };
 
-const metricDisplayNameMap = {
+const metricDisplayNameMap: {
+    [key: string]: string
+} = {
     CF: 'Change Failure',
     DF: 'Deployment Frequency',
     LT: 'Lead Time',
     MTTR: 'Mean Time to Restore Service'
 };
 
-const AppMetricDetail = ({rating, metric}) =>
+const AppMetricDetail = (props: {rating: string, metric: string}) =>
     <div className={'app-metric-detail'}>
-        <div>{`${metricDisplayNameMap[metric]}: `}</div>
+        <div>{`${metricDisplayNameMap[props.metric]}: `}</div>
         <img
-            alt={`${metricDisplayNameMap[metric]} badge`}
-            src={badgeMap[rating]}
+            alt={`${metricDisplayNameMap[props.metric]} badge`}
+            src={badgeMap[props.rating]}
         />
     </div>;
 

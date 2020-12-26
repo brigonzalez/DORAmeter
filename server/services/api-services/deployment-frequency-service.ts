@@ -45,12 +45,10 @@ const getCorrespondingMetricGoal = (
     let correspondingMetricGoal: string | null = null;
 
     Object.keys(metricGoals).forEach((metricGoal) => {
-        // @ts-ignore
         const numericMetricGoal = parseInt(metricGoals[metricGoal]);
 
         if (numericMetricGoal >= differenceBWCurrentTimeAndLastDeploymentDate) {
             correspondingMetricGoal = !correspondingMetricGoal ||
-            // @ts-ignore
             numericMetricGoal < parseInt(metricGoals[correspondingMetricGoal])
                 ? metricGoal : correspondingMetricGoal;
         }
