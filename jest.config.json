@@ -27,7 +27,7 @@
         "<rootDir>/tests/"
       ],
       "moduleNameMapper": {
-        "\\.(css|scss|svg)$": "<rootDir>/tests/stubs/empty-stub.js"
+        "\\.(css|scss|svg|ico)$": "<rootDir>/tests/stubs/empty-stub.js"
       }
     },
     {
