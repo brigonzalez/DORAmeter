@@ -48,11 +48,15 @@ describe('deployment frequency query', () => {
             .into('event');
     };
 
-    const setupTestsForDeploymentFrequency = async (appName: string,
-        lastDeploymentTimestamp: Date) => {
+    const setupTestsForDeploymentFrequency = async (
+        appName: string,
+        lastDeploymentTimestamp: Date | null
+    ) => {
         const appId = await insertApp(appName);
 
-        await insertEvent(appId, lastDeploymentTimestamp.toISOString());
+        if (lastDeploymentTimestamp) {
+            await insertEvent(appId, lastDeploymentTimestamp.toISOString());
+        }
 
         return appId;
     };
@@ -186,27 +190,53 @@ describe('deployment frequency query', () => {
     });
 
     describe('nonperforming deployment frequency app', () => {
-        const nonPerformingAppName = chance.word();
-        const lastDeploymentTimestamp = sub(new Date(), {
-            years: chance.d4()
+        describe('deployment event is added for the app', () => {
+            const nonPerformingAppName = chance.word();
+            const lastDeploymentTimestamp = sub(new Date(), {
+                years: chance.d4()
+            });
+
+            let appId: string;
+
+            beforeAll(async () => {
+                appId = await setupTestsForDeploymentFrequency(nonPerformingAppName, lastDeploymentTimestamp);
+            });
+
+            test('should return elite rating for deployment frequency app', async () => {
+                const data = await makeGQLRequestToRetrieveDeploymentFrequency(nonPerformingAppName);
+
+                expect(data.app).toStrictEqual({
+                    deploymentFrequency: {
+                        lastDeploymentTimestamp: lastDeploymentTimestamp.toISOString(),
+                        rating: 'NONE'
+                    },
+                    id: appId,
+                    name: nonPerformingAppName
+                });
+            });
         });
 
-        let appId: string;
+        describe('deployment event is not added for the app', () => {
+            const nonPerformingAppName = chance.word();
+            const lastDeploymentTimestamp = new Date(1969, 12, 28);
 
-        beforeAll(async () => {
-            appId = await setupTestsForDeploymentFrequency(nonPerformingAppName, lastDeploymentTimestamp);
-        });
+            let appId: string;
 
-        test('should return elite rating for deployment frequency app', async () => {
-            const data = await makeGQLRequestToRetrieveDeploymentFrequency(nonPerformingAppName);
+            beforeAll(async () => {
+                appId = await setupTestsForDeploymentFrequency(nonPerformingAppName, lastDeploymentTimestamp);
+            });
 
-            expect(data.app).toStrictEqual({
-                deploymentFrequency: {
-                    lastDeploymentTimestamp: lastDeploymentTimestamp.toISOString(),
-                    rating: 'NONE'
-                },
-                id: appId,
-                name: nonPerformingAppName
+            test('should return elite rating for deployment frequency app', async () => {
+                const data = await makeGQLRequestToRetrieveDeploymentFrequency(nonPerformingAppName);
+
+                expect(data.app).toStrictEqual({
+                    deploymentFrequency: {
+                        lastDeploymentTimestamp: lastDeploymentTimestamp.toISOString(),
+                        rating: 'NONE'
+                    },
+                    id: appId,
+                    name: nonPerformingAppName
+                });
             });
         });
     });

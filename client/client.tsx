@@ -1,12 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {Admin, Resource} from 'react-admin';
+import Favicon from 'react-favicon';
 
-const App = () =>
-    <Admin>
-        <Resource
-            name="users"
-        />
-    </Admin>;
+import Layout from './components/Layout';
+// @ts-ignore
+import favicon from './assets/favicon.ico';
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+import './css/main.scss';
+
+const Client = () =>
+    <>
+        <Favicon url={favicon} />
+        <Layout />
+    </>;
+
+ReactDOM.render(<Client />, document.querySelector('#app'));

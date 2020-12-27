@@ -6,6 +6,7 @@
     "noUnusedLocals": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "jsx": "react",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,

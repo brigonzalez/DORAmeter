@@ -3,6 +3,7 @@ import {gql} from 'apollo-server-express';
 export default gql`
     type Query {
         app(name: String!): App!
+        apps: [App!]
     }
 
     type App {

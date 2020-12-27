@@ -1,0 +1,65 @@
+$background-color: #222222;
+
+body {
+  font-family: Helvetica, sans-serif;
+  overflow-x: hidden;
+  background: $background-color
+}
+
+.header {
+  padding-top: 1%;
+  background: $background-color
+}
+
+.dorameter-logo {
+  height: 50px;
+  width: 100vw;
+};
+
+.apps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+  .app-metric-details {
+    min-width: 44%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app-metric-details {
+    min-width: 100%;
+  }
+}
+
+.app-metric-details {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 33%;
+  color: white;
+  margin: 2% 0;
+}
+
+.app-metric-details div {
+  margin: 2% 5%;
+}
+
+.app-metric-details img {
+  height: 25px;
+}
+
+.app-metric-details-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 5%;
+}
+
+.app-metric-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

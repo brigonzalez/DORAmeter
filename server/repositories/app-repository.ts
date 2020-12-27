@@ -1,4 +1,4 @@
-import {getAppByAppNameFromRepository, createAppInRepository} from '../services/domain-services/app-service';
+import {getAppByAppNameFromRepository, createAppInRepository, getAllAppsFromRepository} from '../services/domain-services/app-service';
 
 import {getDBClient} from './database-connection';
 
@@ -22,4 +22,12 @@ export const insertApp: createAppInRepository = async (app) => {
         .into(APP_TABLE);
 
     return createdApp;
+};
+
+export const selectAllApps: getAllAppsFromRepository = async () => {
+    const apps = await getDBClient()
+        .select('app_id', 'name')
+        .from(APP_TABLE);
+
+    return <[{app_id: string, name: string}]> apps;
 };

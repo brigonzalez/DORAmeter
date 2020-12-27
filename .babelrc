@@ -1,11 +1,17 @@
 {
-    "presets": [
-        ["@babel/preset-env", {
-            "targets": {
-                "node": "12.18.3"
-            }
-        }],
-        "@babel/preset-typescript",
-        "@babel/preset-react"
-      ]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "12.18.3"
+        }
+      }
+    ],
+    "@babel/preset-typescript",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
 }
