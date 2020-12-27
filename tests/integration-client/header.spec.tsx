@@ -9,6 +9,7 @@ describe('header', () => {
     test('renders Header', () => {
         render(<Header />);
 
+        // @ts-ignore
         expect(screen.getByAltText('DORAmeter logo')).toBeInTheDocument();
     });
 });

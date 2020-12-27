@@ -57,10 +57,15 @@ describe('app metrics', () => {
             const meanTimeToRestoreServiceBadge = await screen.findAllByAltText('Mean Time to Restore Service badge');
             const changeFailureBadge = await screen.findAllByAltText('Change Failure badge');
 
+            // @ts-ignore
             expect(appAMetricHeader).toBeInTheDocument();
+            // @ts-ignore
             expect(deploymentFrequencyBadge[i]).toBeInTheDocument();
+            // @ts-ignore
             expect(leadTimeBadge[i]).toBeInTheDocument();
+            // @ts-ignore
             expect(meanTimeToRestoreServiceBadge[i]).toBeInTheDocument();
+            // @ts-ignore
             expect(changeFailureBadge[i]).toBeInTheDocument();
         }
     });
