@@ -1,4 +1,6 @@
 $background-color: #222222;
+$logo-color: #103EFF;
+$loading-indicator-size: 5rem;
 
 body {
   font-family: Helvetica, sans-serif;
@@ -62,4 +64,24 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $loading-indicator-size;
+  height: $loading-indicator-size;
+  margin-top: -$loading-indicator-size/2;
+  margin-left: -$loading-indicator-size/2;
+  border-radius: 50%;
+  border-top: 2px solid $logo-color;
+  border-right: 2px solid transparent;
+  animation: spinner .6s linear infinite;
 }
