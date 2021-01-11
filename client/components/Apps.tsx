@@ -13,10 +13,11 @@ const Apps = () => {
             rating: string
         }
     }[] | []>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const getAllApps = async () => {
-            const {data: {apps: gqlApps}} = await graphQLClient.query({
+            const {data: {apps: gqlApps}, loading} = await graphQLClient.query({
                 query: gql`
                     query getAllApps {
                         apps {
@@ -30,6 +31,7 @@ const Apps = () => {
                 `
             });
 
+            setIsLoading(loading);
             setApps(gqlApps);
         };
 
@@ -37,32 +39,38 @@ const Apps = () => {
     }, []);
 
     return (
-        <div className={'apps'}>
-            {(apps as any[]).map((app) => // eslint-disable-line no-extra-parens
-                <div
-                    className={'app-metric-details'}
-                    key={app.id}
-                >
-                    <p className={'app-metric-details-header'}>{app.name}</p>
-                    <AppMetricDetail
-                        metric={'DF'}
-                        rating={app.deploymentFrequency.rating}
-                    />
-                    <AppMetricDetail
-                        metric={'LT'}
-                        rating={'NONE'}
-                    />
-                    <AppMetricDetail
-                        metric={'MTTR'}
-                        rating={'NONE'}
-                    />
-                    <AppMetricDetail
-                        metric={'CF'}
-                        rating={'NONE'}
-                    />
-                </div>
-            )}
-        </div>
+        <>
+            {
+                isLoading as boolean ?
+                    <div className={'loading-spinner'} /> :
+                    <div className={'apps'}>
+                        {(apps as any[]).map((app) => // eslint-disable-line no-extra-parens
+                            <div
+                                className={'app-metric-details'}
+                                key={app.id}
+                            >
+                                <p className={'app-metric-details-header'}>{app.name}</p>
+                                <AppMetricDetail
+                                    metric={'DF'}
+                                    rating={app.deploymentFrequency.rating}
+                                />
+                                <AppMetricDetail
+                                    metric={'LT'}
+                                    rating={'NONE'}
+                                />
+                                <AppMetricDetail
+                                    metric={'MTTR'}
+                                    rating={'NONE'}
+                                />
+                                <AppMetricDetail
+                                    metric={'CF'}
+                                    rating={'NONE'}
+                                />
+                            </div>
+                        )}
+                    </div>
+            }
+        </>
     );
 };
 
