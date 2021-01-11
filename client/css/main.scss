@@ -66,11 +66,11 @@ body {
   align-items: center;
 }
 
-@keyframes spinner {
+@keyframes loading-spinner {
   to {transform: rotate(360deg);}
 }
 
-.spinner:before {
+.loading-spinner:before {
   content: '';
   box-sizing: border-box;
   position: absolute;
@@ -83,5 +83,5 @@ body {
   border-radius: 50%;
   border-top: 2px solid $logo-color;
   border-right: 2px solid transparent;
-  animation: spinner .6s linear infinite;
+  animation: loading-spinner .6s linear infinite;
 }

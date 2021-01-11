@@ -10,9 +10,8 @@ import './css/main.scss';
 
 const Client = () =>
     <>
-        {/* <Favicon url={favicon} />*/}
-        {/* <Layout />*/}
-        <div className={'spinner'} />
+        <Favicon url={favicon} />
+        <Layout />
     </>;
 
 ReactDOM.render(<Client />, document.querySelector('#app'));
