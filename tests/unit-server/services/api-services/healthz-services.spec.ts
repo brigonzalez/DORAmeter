@@ -2,7 +2,7 @@ import Chance from 'chance';
 
 import {logError} from '../../../../server/server-infra/logger-service';
 import {selectOne} from '../../../../server/repositories/healthz-repository';
-import {areRepositoriesHealthy} from '../../../../server/services/api-services/healthz-services';
+import {areRepositoriesHealthy} from '../../../../server/services/controller-services/healthz-services';
 
 jest.mock('../../../../server/repositories/healthz-repository');
 jest.mock('../../../../server/server-infra/logger-service');

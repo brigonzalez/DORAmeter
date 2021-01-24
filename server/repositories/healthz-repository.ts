@@ -1,4 +1,4 @@
-import {getRowFromRepository} from '../services/api-services/healthz-services';
+import {getRowFromRepository} from '../services/controller-services/healthz-services';
 
 import {getDBClient} from './database-connection';
 

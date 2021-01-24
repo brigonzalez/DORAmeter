@@ -1,7 +1,7 @@
 import {Response, Request} from 'express';
 import {CREATED} from 'http-status';
 
-import eventRegistrationService from '../services/api-services/event-registration-service';
+import eventRegistrationService from '../services/controller-services/event-registration-service';
 import restErrorHandler from '../utils/rest-error-handler';
 
 export const handler = async ({body}: Request, response: Response) => {

@@ -13,6 +13,7 @@
         "react/jsx-filename-extension": "off",
         "eslint-comments/no-unlimited-disable": "off",
         "unicorn/no-abusive-eslint-disable": "off",
+        "unicorn/no-console-spaces": "off",
         "camelcase": "off",
         "jest/no-if": "off",
         "callback-return": "off",

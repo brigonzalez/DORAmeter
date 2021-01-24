@@ -1,6 +1,7 @@
 $background-color: #222222;
 $logo-color: #103EFF;
 $loading-indicator-size: 5rem;
+$height-of-DORAmeter-logo: 50px;
 
 body {
   font-family: Helvetica, sans-serif;
@@ -8,14 +9,35 @@ body {
   background: $background-color
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   padding-top: 1%;
-  background: $background-color
+  display: flex;
+  justify-content: center;
 }
 
 .dorameter-logo {
-  height: 50px;
+  height: $height-of-DORAmeter-logo;
   width: 100vw;
+};
+
+.error {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-logo {
+  height: 5rem;
 };
 
 .apps {
