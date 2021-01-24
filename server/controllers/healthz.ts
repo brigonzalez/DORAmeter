@@ -1,7 +1,7 @@
 import {Response, Request} from 'express';
 import {OK} from 'http-status';
 
-import {areRepositoriesHealthy} from '../services/api-services/healthz-services';
+import {areRepositoriesHealthy} from '../services/controller-services/healthz-services';
 
 export const handler = async (_: Request, response: Response) => {
     const database = await areRepositoriesHealthy() ? 'OK' : 'Not OK';

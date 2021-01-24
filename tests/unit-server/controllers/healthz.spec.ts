@@ -1,9 +1,9 @@
 import {OK} from 'http-status';
 
 import {handler} from '../../../server/controllers/healthz';
-import {areRepositoriesHealthy} from '../../../server/services/api-services/healthz-services';
+import {areRepositoriesHealthy} from '../../../server/services/controller-services/healthz-services';
 
-jest.mock('../../../server/services/api-services/healthz-services');
+jest.mock('../../../server/services/controller-services/healthz-services');
 
 describe('healthz controller', () => {
     describe('handler', () => {

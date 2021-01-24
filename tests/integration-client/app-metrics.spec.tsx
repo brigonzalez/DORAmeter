@@ -1,7 +1,7 @@
 import React from 'react';
 import {graphql} from 'msw';
 import {setupServer} from 'msw/node';
-import {render, screen} from '@testing-library/react';
+import {render, screen, cleanup} from '@testing-library/react';
 
 import Apps from '../../client/components/Apps';
 
@@ -43,30 +43,62 @@ describe('app metrics', () => {
     );
 
     beforeAll(() => server.listen());
-    afterEach(() => server.resetHandlers());
+    afterEach(() => {
+        server.resetHandlers();
+        cleanup();
+    });
     afterAll(() => server.close());
 
-    test('renders data and badges for all apps', async () => {
-        render(<Apps />);
+    describe('unsuccessful getAllApps gql request', () => {
+        test('renders error page on errors from server', async () => {
+            server.use(
+                graphql.query(
+                    'getAllApps',
+                    (_, res, ctx) =>
+                        res(
+                            ctx.errors([
+                                {
+                                    message: 'Internal server error'
+                                }
+                            ])
+                        )
+                )
+            );
+            render(<Apps />);
 
-        for (let i = 0; i < returnedAppData.length; i++) {
-            const app = returnedAppData[i];
-            const appAMetricHeader = await screen.findByText(app.name);
-            const deploymentFrequencyBadge = await screen.findAllByAltText('Deployment Frequency badge');
-            const leadTimeBadge = await screen.findAllByAltText('Lead Time badge');
-            const meanTimeToRestoreServiceBadge = await screen.findAllByAltText('Mean Time to Restore Service badge');
-            const changeFailureBadge = await screen.findAllByAltText('Change Failure badge');
+            const errorLogo = await screen.findByAltText('Error logo');
+            const errorText = await screen.findByText('Something went wrong. Please try again.');
 
             // @ts-ignore
-            expect(appAMetricHeader).toBeInTheDocument();
+            expect(errorLogo).toBeInTheDocument();
             // @ts-ignore
-            expect(deploymentFrequencyBadge[i]).toBeInTheDocument();
-            // @ts-ignore
-            expect(leadTimeBadge[i]).toBeInTheDocument();
-            // @ts-ignore
-            expect(meanTimeToRestoreServiceBadge[i]).toBeInTheDocument();
-            // @ts-ignore
-            expect(changeFailureBadge[i]).toBeInTheDocument();
-        }
+            expect(errorText).toBeInTheDocument();
+        });
+    });
+
+    describe('successful getAllApps gql request', () => {
+        test('renders data and badges for all apps', async () => {
+            render(<Apps />);
+
+            for (let i = 0; i < returnedAppData.length; i++) {
+                const app = returnedAppData[i];
+                const appAMetricHeader = await screen.findByText(app.name);
+                const deploymentFrequencyBadge = await screen.findAllByAltText('Deployment Frequency badge');
+                const leadTimeBadge = await screen.findAllByAltText('Lead Time badge');
+                const meanTimeToRestoreServiceBadge = await screen.findAllByAltText('Mean Time to Restore Service badge');
+                const changeFailureBadge = await screen.findAllByAltText('Change Failure badge');
+
+                // @ts-ignore
+                expect(appAMetricHeader).toBeInTheDocument();
+                // @ts-ignore
+                expect(deploymentFrequencyBadge[i]).toBeInTheDocument();
+                // @ts-ignore
+                expect(leadTimeBadge[i]).toBeInTheDocument();
+                // @ts-ignore
+                expect(meanTimeToRestoreServiceBadge[i]).toBeInTheDocument();
+                // @ts-ignore
+                expect(changeFailureBadge[i]).toBeInTheDocument();
+            }
+        });
     });
 });

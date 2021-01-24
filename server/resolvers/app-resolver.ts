@@ -23,6 +23,8 @@ export const appByNameResolver = async (_: any, {name}: {name: string}) => {
 };
 
 export const appsResolver = async () => {
+    // throw new ApolloError('Internal server error');
+
     const {error, apps} = await getAllApps();
 
     if (error) {

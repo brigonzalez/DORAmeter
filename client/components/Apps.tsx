@@ -2,10 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {gql, ApolloError} from '@apollo/client';
 
 import graphQLClient from '../adapters/graphql-client';
-// @ts-ignore
-import Error from '../assets/Error.svg';
 
 import AppMetricDetail from './AppMetricDetail';
+import Error from './Error';
 
 const Apps = () => {
     const [apps, setApps] = useState<{
@@ -19,8 +18,8 @@ const Apps = () => {
     const [error, setError] = useState<ApolloError | null>(null);
 
     useEffect(() => {
-        const getAllApps = async () => {
-            const {data: {apps: gqlApps}, loading, error: queryError} = await graphQLClient.query({
+        const getAllApps = () => {
+            graphQLClient.query({
                 query: gql`
                     query getAllApps {
                         apps {
@@ -32,11 +31,13 @@ const Apps = () => {
                         }
                     }
                 `
+            }).then(({data: {apps: gqlApps}, loading}) => {
+                setApps(gqlApps);
+                setIsLoading(loading);
+            }).catch((error_) => {
+                setIsLoading(false);
+                setError(error_ as ApolloError);
             });
-
-            setError(queryError as ApolloError);
-            setIsLoading(loading);
-            setApps(gqlApps);
         };
 
         getAllApps();
@@ -48,14 +49,7 @@ const Apps = () => {
                 isLoading as boolean ? // eslint-disable-line no-nested-ternary
                     <div className={'loading-spinner'} /> :
                     error ?
-                        <div className={'error'}>
-                            <img
-                                alt={'Error logo'}
-                                className={'error-logo'}
-                                src={Error}
-                            />
-                            <p>{'Something went wrong. Please try again.'}</p>
-                        </div> :
+                        <Error /> :
                         <div className={'apps'}>
                             {(apps as any[]).map((app) => // eslint-disable-line no-extra-parens
                                 <div
