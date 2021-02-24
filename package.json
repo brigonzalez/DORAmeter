@@ -17,6 +17,7 @@
     "make-badges": "istanbul-badges-readme",
     "migrate": "db-migrate up --config db-migrate.json -m server/repositories/migrations -t dorameter_migrations",
     "restart-local-db": "yarn stop-local-db && yarn start-local-db",
+    "migrate-seed-data": "db-migrate up --config db-migrate.json -m seed-data -t dorameter_migrations -e localhost",
     "start": "node ./dist-server/start-dorameter.js",
     "start-local-db": "docker-compose up -d --build && sleep 5 && yarn migrate -e localhost",
     "stop-local-db": "docker-compose down && docker volume rm dorameter_postgresdata",
