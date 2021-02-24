@@ -16,7 +16,10 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db) {
-    return db.runSql('CREATE SCHEMA dorameter');
+    return db.runSql(`
+            CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+            CREATE SCHEMA dorameter;
+    `);
 };
 
 exports.down = function (db) {
