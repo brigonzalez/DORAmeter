@@ -4,7 +4,7 @@ import React from 'react';
 import ErrorLogo from '../assets/Error.svg';
 
 const Error = () =>
-    <div className={'error'}>
+    <div className={'alert-message'}>
         <img
             alt={'Error logo'}
             className={'error-logo'}

@@ -6,7 +6,7 @@ import Header from '../../client/components/Header';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('header', () => {
-    test('renders Header', () => {
+    test('should render Header', () => {
         render(<Header />);
 
         // @ts-ignore
