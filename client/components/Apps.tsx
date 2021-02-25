@@ -3,8 +3,9 @@ import {gql, ApolloError} from '@apollo/client';
 
 import graphQLClient from '../adapters/graphql-client';
 
-import AppMetricDetail from './AppMetricDetail';
 import Error from './Error';
+import NoDataFound from './NoDataFound';
+import AppData from './AppData';
 
 const Apps = () => {
     const [apps, setApps] = useState<{
@@ -51,30 +52,14 @@ const Apps = () => {
                     error ?
                         <Error /> :
                         <div className={'apps'}>
-                            {(apps as any[]).map((app) => // eslint-disable-line no-extra-parens
-                                <div
-                                    className={'app-metric-details'}
-                                    key={app.id}
-                                >
-                                    <p className={'app-metric-details-header'}>{app.name}</p>
-                                    <AppMetricDetail
-                                        metric={'DF'}
-                                        rating={app.deploymentFrequency.rating}
+                            {!apps.length ?
+                                <NoDataFound /> :
+                                (apps as any[]).map((app) => // eslint-disable-line no-extra-parens
+                                    <AppData
+                                        app={app}
+                                        key={app.id}
                                     />
-                                    <AppMetricDetail
-                                        metric={'LT'}
-                                        rating={'NONE'}
-                                    />
-                                    <AppMetricDetail
-                                        metric={'MTTR'}
-                                        rating={'NONE'}
-                                    />
-                                    <AppMetricDetail
-                                        metric={'CF'}
-                                        rating={'NONE'}
-                                    />
-                                </div>
-                            )}
+                                )}
                         </div>
             }
         </>
