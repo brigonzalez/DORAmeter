@@ -7,24 +7,58 @@ database to persist metrics that are reported to it. DORAmeter captures data thr
 `/events` endpoint, with a payload described below in the [Running Locally](#running-locally) section. It uses GraphQL
 to query data for its frontend.
 
-### How the metrics are calculated
-
-#### Deployment Frequency
-
-#### Lead Time
-
-#### Mean Time To Restore
-
-#### Change Failure
-
 ### Coverage
 
 | Statements                | Branches                | Functions                | Lines                |
 | ------------------------- | ----------------------- | ------------------------ | -------------------- |
 | ![Statements](https://img.shields.io/badge/Coverage-93.98%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-93.33%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-86.84%25-yellow.svg) | ![Lines](https://img.shields.io/badge/Coverage-94.4%25-brightgreen.svg) |
 
-> The above coverage numbers are not accurate because Jest coverage doesn't play nice with integration tests. Coverage 
+> The above coverage numbers are not accurate because Jest coverage doesn't play nice with integration tests. Coverage
 > above 80% on all code structures are still enforced.
+
+### Choice of icon
+
+### What the metrics are and how they are calculated
+
+#### Deployment Frequency
+
+Deployment frequency (DF) is a measure of how often code gets deployed to production. It indirectly measures the size of
+the change being delivered. It has been proven that smaller code changes accelerate feedback, and reduces risk and
+overhead.
+
+DF is measured by the difference between the current time and the last time the app was deployed, in hours. Below are
+rankings for the difference measured:
+
+| Ranking | Time (in hours) |
+|---------|-----------------|
+| ELITE | < 24 |
+| HIGH | < 168 (1 week) |
+| MEDIUM | < 672 (1 4 week month) |
+| LOW | < 4032 (6 months) |
+
+#### Lead Time
+
+Lead time (LT) is a measure of the average time it takes the app to go from code committed to code deployed. Shorter
+LT's is significant because they enable faster feedback on what is being built and allows for more rapid course
+correction.
+
+Rankings TBD.
+
+#### Mean Time To Restore
+
+Mean time to restore (MTTR) is a measure of the time it takes to restore a failed service. Shorter MTTR means higher
+reliability for systems.
+
+Rankings TBD.
+
+#### Change Failure
+
+Change failure (CF) is a measure of the rate of changes to production that fail. A low CF rate is a representation for
+the accuracy of the change being made.
+
+`(number of failed changes)/(number of successful changes) x 100`
+
+Rankings TBD.
 
 ### Running Locally
 
