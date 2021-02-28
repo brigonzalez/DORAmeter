@@ -11,7 +11,7 @@ to query data for its frontend.
 
 ![](.github/assets/DORAmeter-logo-MKII@260.png)
 
-Like a spinning top, the DORA metrics measure between speed and accuracy. It's speed metrics are Deployment Frequency
+Like a spinning top, the DORA metrics find the balance between speed and accuracy. It's speed metrics are Deployment Frequency
 and Lead Time. It's accuracy metrics are Mean Time to Restore and Change Failure. Too much focus on speed or accuracy
 and your app will degrade in performance. A good balance will keep the top spinning.
 
@@ -22,7 +22,8 @@ and your app will degrade in performance. A good balance will keep the top spinn
 | ![Statements](https://img.shields.io/badge/Coverage-93.98%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-93.33%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-86.84%25-yellow.svg) | ![Lines](https://img.shields.io/badge/Coverage-94.4%25-brightgreen.svg) |
 
 > The above coverage numbers are not accurate because Jest coverage doesn't play nice with integration tests. Coverage
-> above 80% on all code structures are still enforced.
+> above 80% on all code coverage features are still enforced. 100% test coverage is the goal, whether enforced through
+> Jest or not
 
 ### What the metrics are and how they are calculated
 
