@@ -11,9 +11,9 @@ to query data for its frontend.
 
 ![](.github/assets/DORAmeter-logo-MKII@260.png)
 
-I chose a spinning top because of the balance that the DORA metrics measure between speed and accuracy. It's speed
-metrics are Deployment Frequency and Lead Time. It's accuracy metrics are Mean Time to Restore and Change Failure. Too
-much focus on speed or accuracy and your app will degrade in performance. A good balance will keep the top spinning.
+Like a spinning top, the DORA metrics measure between speed and accuracy. It's speed metrics are Deployment Frequency
+and Lead Time. It's accuracy metrics are Mean Time to Restore and Change Failure. Too much focus on speed or accuracy
+and your app will degrade in performance. A good balance will keep the top spinning.
 
 ### Coverage
 
@@ -32,8 +32,12 @@ Deployment frequency (DF) is a measure of how often code gets deployed to produc
 the change being delivered. It has been proven that smaller code changes accelerate feedback, and reduces risk and
 overhead.
 
-DF is measured by the difference between the current time and the last time the app was deployed, in hours. Below are
-rankings for the difference measured:
+DF is measured by the difference between the current time and the last time the app was deployed, in hours. The choice
+to measure between the current time and last deployment was made because it's rare that an app runs in complete
+isolation with no dependencies. It's more likely that your app, like every app, will suffer from
+[software rot](https://en.wikipedia.org/wiki/Software_rot) from these dependencies if not continuously updated. In a
+later update, I may add the option to measure the time between the two last deployments. Below are rankings for the
+difference measured:
 
 | Ranking | Time (in hours) |
 |---------|-----------------|
@@ -75,30 +79,33 @@ Rankings TBD.
 POST localhost:4444/event
 JSON Request Body:
 {
-  "appName": "app a",
-  "buildId": "someBuildId",
+  "appName": "App J",
+  "buildId": "someBuildId12345",
   "eventType": "DEPLOYMENT" (To be implemented: "CODE_COMMITTED", "SUCCESSFUL_TEST", "UNSUCCESSFUL_TEST")
 }
 ```
+3. Visit `http://localhost/` on a browser to view the frontend for DORAmeter
+
+![](.github/assets/DORAmeter-Screen-Shot.png)
 
 This API saves events through a RESTful API and will query those saved events through GraphQL for its frontend. To see 
-the data for the UI:
-1. Visit `http://localhost:4444/graphql`
-2. To retrieve the deployment frequency of "app a" make the following query:
+the raw data for the UI:
+1. Visit `http://localhost:4444/graphql` to view the Apollo's GraphQL Playground
+2. To retrieve all apps' deployment frequency make the following query:
 ```graphql
-{
-  app(name: "app a") {
-    deploymentFrequency {
-      lastDeploymentTimestamp
-      rating
+ query getAllAppsDeploymentFrequency {
+    apps {
+        deploymentFrequency {
+            lastDeploymentTimestamp
+            rating
+        }
     }
-  }
 }
 ```
 
 ### TODO
 
-There's still some work left. I still need to add the capability to report on:
+There's still some work left. I need to add the capability to report on:
 * Lead Time
 * Mean Time To Restore
 * Change Failure
