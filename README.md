@@ -7,6 +7,14 @@ database to persist metrics that are reported to it. DORAmeter captures data thr
 `/events` endpoint, with a payload described below in the [Running Locally](#running-locally) section. It uses GraphQL
 to query data for its frontend.
 
+#### Choice of icon 
+
+![](.github/assets/DORAmeter-logo-MKII@260.png)
+
+I chose a spinning top because of the balance that the DORA metrics measure between speed and accuracy. It's speed
+metrics are Deployment Frequency and Lead Time. It's accuracy metrics are Mean Time to Restore and Change Failure. Too
+much focus on speed or accuracy and your app will degrade in performance. A good balance will keep the top spinning.
+
 ### Coverage
 
 | Statements                | Branches                | Functions                | Lines                |
@@ -15,8 +23,6 @@ to query data for its frontend.
 
 > The above coverage numbers are not accurate because Jest coverage doesn't play nice with integration tests. Coverage
 > above 80% on all code structures are still enforced.
-
-### Choice of icon
 
 ### What the metrics are and how they are calculated
 
@@ -31,14 +37,15 @@ rankings for the difference measured:
 
 | Ranking | Time (in hours) |
 |---------|-----------------|
-| ELITE | < 24 |
-| HIGH | < 168 (1 week) |
-| MEDIUM | < 672 (1 4 week month) |
-| LOW | < 4032 (6 months) |
+| ![](.github/assets/Elite-Badge@50.png) | < 24 |
+| ![](.github/assets/High-Badge@50.png) | < 168 (1 week) |
+| ![](.github/assets/Medium-Badge@50.png) | < 672 (1 4 week month) |
+| ![](.github/assets/Low-Badge@50.png) | < 4032 (6 months) |
+| ![](.github/assets/None-Badge@50.png) | Not enough data |
 
 #### Lead Time
 
-Lead time (LT) is a measure of the average time it takes the app to go from code committed to code deployed. Shorter
+Lead time (LT) is a measure of time it takes the app to go from code committed to code deployed. Shorter
 LT's is significant because they enable faster feedback on what is being built and allows for more rapid course
 correction.
 
