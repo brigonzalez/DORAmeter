@@ -23,4 +23,4 @@ jobs:
         run: yarn --no-progress
 
       - name: Runs linter and tests
-        run: yarn dev & yarn verify
+        run: yarn dev & sleep 10 && yarn verify
