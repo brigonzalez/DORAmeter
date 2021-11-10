@@ -78,7 +78,7 @@ JSON Request Body:
 
 3. Visit `http://localhost/` on a browser to view the frontend for DORAmeter
 
-![](.github/assets/DORAmeter-Screen-Shot.png)
+![](.github/assets/DORAmeter-Screenshot.png)
 
 ### TODO
 
