@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "spaced-comment": "off",
+    "no-unused-expressions": "off",
+    "jest/valid-expect": "off",
+    "jest/expect-expect": "off",
+    "jest/consistent-test-it": "off"
+  }
+}

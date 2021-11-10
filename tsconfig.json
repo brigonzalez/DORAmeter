@@ -1,29 +1,32 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "jsx": "react",
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    "types": [
-      "jest",
-      "node"
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "target": "es6",
-    "module": "CommonJS",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "outDir": "./dist-server"
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
   },
   "include": [
-    "server/**/*.ts"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "node_modules/cypress/types/mocha/index.d.ts"
   ],
   "exclude": [
-    "tests",
-    "client"
+    "node_modules",
+    "cypress"
   ]
 }

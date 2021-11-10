@@ -1,31 +1,40 @@
 {
-    "extends": [
-        "get-off-my-lawn"
+  "plugins": [
+    "eslint-plugin-prettier"
+  ],
+  "extends": [
+    "get-off-my-lawn",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "import/order": "off",
+    "camelcase": "off",
+    "no-use-before-define": "off",
+    "unicorn/no-for-loop": "off",
+    "no-await-in-loop": "off",
+    "react/forbid-elements": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
     ],
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "rules": {
-        "no-console": "off",
-        "no-unused-vars": "off",
-        "unicorn/no-for-loop": "off",
-        "no-await-in-loop": "off",
-        "import/extensions": "off",
-        "react/jsx-filename-extension": "off",
-        "eslint-comments/no-unlimited-disable": "off",
-        "unicorn/no-abusive-eslint-disable": "off",
-        "unicorn/no-console-spaces": "off",
-        "camelcase": "off",
-        "jest/no-if": "off",
-        "callback-return": "off",
-        "@typescript-eslint/no-unused-vars": [
-            "error"
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".css"
         ]
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-            "extensions": [".js", ".jsx", ".ts", ".tsx"]
-            }
-        }
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
     }
+  }
 }

@@ -1,9 +1,5 @@
 {
-    "rules": {
-        "no-undef": "off",
-        "node/no-unpublished-import": "off",
-        "no-extra-parens": "off",
-        "jest/no-try-expect": "off",
-        "jest/prefer-spy-on": "off"
-    }
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off"
+  }
 }

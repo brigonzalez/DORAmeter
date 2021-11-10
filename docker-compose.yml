@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
-    image: postgres
+    image: postgres:9.6.23-alpine3.14
     restart: always
     environment:
       POSTGRES_USER: user
