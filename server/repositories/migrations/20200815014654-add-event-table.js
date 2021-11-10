@@ -1,5 +1,4 @@
-/* eslint-disable */
-'use strict';
+"use strict";
 
 var dbm;
 var type;
@@ -10,13 +9,13 @@ var seed;
  * This enables us to not have to rely on NODE_PATH.
  */
 exports.setup = function (options, seedLink) {
-    dbm = options.dbmigrate;
-    type = dbm.dataType;
-    seed = seedLink;
+  dbm = options.dbmigrate;
+  type = dbm.dataType;
+  seed = seedLink;
 };
 
 exports.up = function (db) {
-    return db.runSql(`
+  return db.runSql(`
         CREATE TABLE dorameter.event
         (
             event_id          UUID UNIQUE NOT NULL DEFAULT uuid_generate_v4(),
@@ -33,12 +32,11 @@ exports.up = function (db) {
 };
 
 exports.down = function (db) {
-    return db.runSql(`
+  return db.runSql(`
         DROP TABLE dorameter.event
     `);
 };
 
 exports._meta = {
-    "version": 1
+  version: 1,
 };
-/* eslint-enable */

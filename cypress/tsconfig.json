@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "types": ["cypress"],
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+  },
+  "include": ["**/*.ts"]
+}

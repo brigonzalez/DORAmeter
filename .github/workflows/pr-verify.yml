@@ -12,20 +12,15 @@ jobs:
         id: checkout
         with:
           ref: ${{ github.head_ref }}
-      - name: Build the docker-compose stack
-        run: docker-compose up -d --build
-      - name: Use Node.js 12.18.3
+
+      - name: Use Node.js 14.16.1
         uses: actions/setup-node@v1
         id: setup-node
         with:
-          node-version: 12.18.3
+          node-version: 14.16.1
+
       - name: Installs dependencies
         run: yarn --no-progress
-      - name: Migrate database
-        run: yarn migrate -e localhost
+
       - name: Runs linter and tests
-        run: yarn verify
-      - name: Test coverage auto-commit
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Test coverage auto-commit
+        run: yarn dev & sleep 10 && yarn verify

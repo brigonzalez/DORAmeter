@@ -1,6 +1,5 @@
-import {getRowFromRepository} from '../services/controller-services/healthz-services';
+import type { GetRowFromRepository } from "../services/healthz-service";
 
-import {getDBClient} from './database-connection';
+import { getDBClient } from "../adapters/db-client-adapter";
 
-export const selectOne: getRowFromRepository = () =>
-    getDBClient().select(1);
+export const selectOne: GetRowFromRepository = () => getDBClient().select(1);

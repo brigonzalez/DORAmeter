@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "es6",
+    "module": "CommonJS",
+    "types": ["jest", "node"],
+  },
+  "include": ["**/*.spec.ts"]
+}

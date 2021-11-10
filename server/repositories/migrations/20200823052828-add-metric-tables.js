@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var dbm;
 var type;
@@ -9,13 +9,13 @@ var seed;
  * This enables us to not have to rely on NODE_PATH.
  */
 exports.setup = function (options, seedLink) {
-    dbm = options.dbmigrate;
-    type = dbm.dataType;
-    seed = seedLink;
+  dbm = options.dbmigrate;
+  type = dbm.dataType;
+  seed = seedLink;
 };
 
 exports.up = function (db) {
-    return db.runSql(`
+  return db.runSql(`
         CREATE TABLE dorameter.metric_goal
         (
             metric_goal_id UUID UNIQUE NOT NULL,
@@ -63,7 +63,7 @@ exports.up = function (db) {
 };
 
 exports.down = function (db) {
-    return db.runSql(`
+  return db.runSql(`
         DROP TABLE dorameter.metric_goal;
         DROP TABLE dorameter.metric_to_metric_goal;
         DROP TABLE dorameter.metric;
@@ -71,5 +71,5 @@ exports.down = function (db) {
 };
 
 exports._meta = {
-    "version": 1
+  version: 1,
 };
