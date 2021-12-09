@@ -1078,13 +1078,13 @@
     core-js-pure "^3.16.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.15.4", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2":
+"@babel/runtime@7.15.4":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.13.10", "@babel/runtime@^7.15.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.15.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.0.tgz#e27b977f2e2088ba24748bf99b5e1dece64e4f0b"
   dependencies:
@@ -1615,9 +1615,9 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@napi-rs/triples/-/triples-1.0.3.tgz#76d6d0c3f4d16013c61e45dfca5ff1e6c31ae53c"
 
-"@next/env@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-12.0.3.tgz#e676b4d1454d8b6be433a348e99f2b8276ab6cd7"
+"@next/env@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-12.0.5.tgz#8116b88348f7a06b6238e61a5170047a34c5d8e4"
 
 "@next/eslint-plugin-next@11.1.2":
   version "11.1.2"
@@ -1625,13 +1625,13 @@
   dependencies:
     glob "7.1.7"
 
-"@next/polyfill-module@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-12.0.3.tgz#4217e5284762124bf9fe2505622c4de89998f7a2"
+"@next/polyfill-module@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-12.0.5.tgz#fe5586f035c36fd1c20d3ade57831cb7686e6eb8"
 
-"@next/react-dev-overlay@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-12.0.3.tgz#d85a609bf7d75eb190940d0fc64eff94c0e4a478"
+"@next/react-dev-overlay@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-12.0.5.tgz#9f60d77927ba8c63a404da00bd9f2372c331c959"
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -1645,53 +1645,53 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.1"
 
-"@next/react-refresh-utils@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-12.0.3.tgz#1389b0370e258634432d6dd78f889c09a8328e10"
+"@next/react-refresh-utils@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-12.0.5.tgz#ecfe49dcfbc871212a36989366c1a8f076c9e855"
 
-"@next/swc-android-arm64@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-android-arm64/-/swc-android-arm64-12.0.3.tgz#8b99b3e7f13dda1f4c3c6dc83af73d8f40afecd5"
+"@next/swc-android-arm64@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-android-arm64/-/swc-android-arm64-12.0.5.tgz#2840ed782f045cba40d049d8ac487c3352c973df"
 
-"@next/swc-darwin-arm64@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.0.3.tgz#a385e610fb4a20c47355520b82a79d08e0f6441e"
+"@next/swc-darwin-arm64@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.0.5.tgz#22e20335000a2112561e22264db3e9b77a923a37"
 
-"@next/swc-darwin-x64@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-12.0.3.tgz#0405a3838a652b7bb44c5cd5d920c11240194385"
+"@next/swc-darwin-x64@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-12.0.5.tgz#a394e471ced02dcd1099908ba3286b578a36cb87"
 
-"@next/swc-linux-arm-gnueabihf@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.0.3.tgz#f5d43be7314044526fd9f1eef34337bb95f02e01"
+"@next/swc-linux-arm-gnueabihf@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.0.5.tgz#1a870e134ca971a35e15e2d3f1fb21d9f4b09bf0"
 
-"@next/swc-linux-arm64-gnu@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.0.3.tgz#6f1cda1dadabcc4d4f13bd6f5ce23b9879bc6d73"
+"@next/swc-linux-arm64-gnu@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.0.5.tgz#646ae3296d20b7e32221cf024484c630c82aaac9"
 
-"@next/swc-linux-arm64-musl@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.0.3.tgz#1eedc1f1fcafc9862ef7e83205ada96bf320a694"
+"@next/swc-linux-arm64-musl@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.0.5.tgz#b6940ae25539dfa8568bc2d544ca52d40009b8ad"
 
-"@next/swc-linux-x64-gnu@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.0.3.tgz#eca85107b01a7571957ae25104d11042e9835a49"
+"@next/swc-linux-x64-gnu@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.0.5.tgz#663553b4a97eb779c9c3903d52ab58723979d81b"
 
-"@next/swc-linux-x64-musl@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.0.3.tgz#758656b8e36a520c03763d154c366bec889c56b3"
+"@next/swc-linux-x64-musl@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.0.5.tgz#559d0154badb2c34ed83d3cb7633b803992e2aa2"
 
-"@next/swc-win32-arm64-msvc@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.0.3.tgz#3f8ab8fa3367d729e49b3072fb24f9d0f8af7c21"
+"@next/swc-win32-arm64-msvc@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.0.5.tgz#a9dfb319f8c1eacbdda20a0d836bed61371a9544"
 
-"@next/swc-win32-ia32-msvc@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.0.3.tgz#e3df153a4e0c896a5871f1d26c7e176fa1ceec72"
+"@next/swc-win32-ia32-msvc@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.0.5.tgz#86d7498f9a64c8a6af3fcf5d02fc4a1426b70399"
 
-"@next/swc-win32-x64-msvc@12.0.3":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.0.3.tgz#c3e4af29cd74190b89461ccc26b932ae4c27f99d"
+"@next/swc-win32-x64-msvc@12.0.5":
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.0.5.tgz#06e64f80aa905b479e547937608f976ea52a1680"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2497,17 +2497,7 @@ browserslist@4.16.6:
     escalade "^3.1.1"
     node-releases "^1.1.71"
 
-browserslist@^4.16.6:
-  version "4.17.0"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.17.0.tgz#1fcd81ec75b41d6d4994fb0831b92ac18c01649c"
-  dependencies:
-    caniuse-lite "^1.0.30001254"
-    colorette "^1.3.0"
-    electron-to-chromium "^1.3.830"
-    escalade "^3.1.1"
-    node-releases "^1.1.75"
-
-browserslist@^4.17.6:
+browserslist@^4.16.6, browserslist@^4.17.6:
   version "4.17.6"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.17.6.tgz#c76be33e7786b497f66cad25a73756c8b938985d"
   dependencies:
@@ -2591,11 +2581,7 @@ camelcase@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.2.0.tgz#924af881c9d525ac9d87f40d964e5cea982a1809"
 
-caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001254:
-  version "1.0.30001256"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001256.tgz#182410b5f024e0ab99c72ec648f234a9986bd548"
-
-caniuse-lite@^1.0.30001274:
+caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001274:
   version "1.0.30001278"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001278.tgz#51cafc858df77d966b17f59b5839250b24417fff"
 
@@ -3243,7 +3229,7 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-electron-to-chromium@^1.3.723, electron-to-chromium@^1.3.830:
+electron-to-chromium@^1.3.723:
   version "1.3.836"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.836.tgz#823cb9c98f28c64c673920f1c90ea3826596eaf9"
 
@@ -5475,17 +5461,17 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-next@12.0.3:
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/next/-/next-12.0.3.tgz#325732ceb4193306a9a31912815fc570d1a66641"
+next@12.0.5:
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/next/-/next-12.0.5.tgz#a36db23f7dc77de0720ad36d32f818594f6754d9"
   dependencies:
     "@babel/runtime" "7.15.4"
     "@hapi/accept" "5.0.2"
     "@napi-rs/triples" "1.0.3"
-    "@next/env" "12.0.3"
-    "@next/polyfill-module" "12.0.3"
-    "@next/react-dev-overlay" "12.0.3"
-    "@next/react-refresh-utils" "12.0.3"
+    "@next/env" "12.0.5"
+    "@next/polyfill-module" "12.0.5"
+    "@next/react-dev-overlay" "12.0.5"
+    "@next/react-refresh-utils" "12.0.5"
     acorn "8.5.0"
     assert "2.0.0"
     browserify-zlib "0.2.0"
@@ -5527,19 +5513,19 @@ next@12.0.3:
     use-subscription "1.5.1"
     util "0.12.4"
     vm-browserify "1.1.2"
-    watchpack "2.1.1"
+    watchpack "2.3.0"
   optionalDependencies:
-    "@next/swc-android-arm64" "12.0.3"
-    "@next/swc-darwin-arm64" "12.0.3"
-    "@next/swc-darwin-x64" "12.0.3"
-    "@next/swc-linux-arm-gnueabihf" "12.0.3"
-    "@next/swc-linux-arm64-gnu" "12.0.3"
-    "@next/swc-linux-arm64-musl" "12.0.3"
-    "@next/swc-linux-x64-gnu" "12.0.3"
-    "@next/swc-linux-x64-musl" "12.0.3"
-    "@next/swc-win32-arm64-msvc" "12.0.3"
-    "@next/swc-win32-ia32-msvc" "12.0.3"
-    "@next/swc-win32-x64-msvc" "12.0.3"
+    "@next/swc-android-arm64" "12.0.5"
+    "@next/swc-darwin-arm64" "12.0.5"
+    "@next/swc-darwin-x64" "12.0.5"
+    "@next/swc-linux-arm-gnueabihf" "12.0.5"
+    "@next/swc-linux-arm64-gnu" "12.0.5"
+    "@next/swc-linux-arm64-musl" "12.0.5"
+    "@next/swc-linux-x64-gnu" "12.0.5"
+    "@next/swc-linux-x64-musl" "12.0.5"
+    "@next/swc-win32-arm64-msvc" "12.0.5"
+    "@next/swc-win32-ia32-msvc" "12.0.5"
+    "@next/swc-win32-x64-msvc" "12.0.5"
 
 node-fetch@2.6.1:
   version "2.6.1"
@@ -5563,7 +5549,7 @@ node-modules-regexp@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-modules-regexp/-/node-modules-regexp-1.0.0.tgz#8d9dbe28964a4ac5712e9131642107c71e90ec40"
 
-node-releases@^1.1.71, node-releases@^1.1.75:
+node-releases@^1.1.71:
   version "1.1.75"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.75.tgz#6dd8c876b9897a1b8e5a02de26afa79bb54ebbfe"
 
@@ -7316,9 +7302,9 @@ walker@^1.0.7:
   dependencies:
     makeerror "1.0.12"
 
-watchpack@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.1.1.tgz#e99630550fca07df9f90a06056987baa40a689c7"
+watchpack@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.3.0.tgz#a41bca3da6afaff31e92a433f4c856a0c25ea0c4"
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
